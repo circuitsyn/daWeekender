@@ -1,0 +1,42 @@
+body {
+    height: 100%;
+    background: lightgray;
+    /* overflow-x: scroll; */
+}
+
+.headerIMG {
+    border-radius: 15px;
+}
+
+#cardSection {
+    margin: auto;
+    padding: 30px 0 30px 0;
+}
+
+#mainSection {
+    background: white;
+    border-radius: 15px;
+    margin: auto;
+    padding: 30px 0 30px 0;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#mainLine {
+    font-size: 70px;
+    font-weight: bolder;
+    padding-left: 4%;
+    padding-bottom: 2%;
+}
+
+#secondaryLine {
+    font-size: 40px;
+    font-weight: 100;
+    padding-left: 4%;
+    padding-top: 2%;
+}
+
+.navWrap {
+    padding-left: 0px;
+    padding-right: 0px;
+}
