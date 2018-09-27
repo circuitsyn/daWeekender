@@ -1,7 +1,8 @@
-body {
+body, html {
     height: 100%;
-    background: lightgray;
-    /* overflow-x: scroll; */
+    /* overflow-y: scroll; */
+    background: transparent url(../images/pattern.png) repeat top left;
+    background-position: top;
 }
 
 .headerIMG {
@@ -39,4 +40,8 @@ body {
 .navWrap {
     padding-left: 0px;
     padding-right: 0px;
+}
+
+.card {
+    border: none;
 }
