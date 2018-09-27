@@ -45,3 +45,14 @@ body, html {
 .card {
     border: none;
 }
+
+/* #navbarNav {
+    background-color: white;
+    padding: 10px 10px 10px 0px;
+    border-radius: 15px;
+    
+} */
+
+.nav-pills {
+    /* background-color: green; */
+}
