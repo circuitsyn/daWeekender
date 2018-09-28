@@ -76,7 +76,15 @@ $(document).ready(function() {
                 // Function to call on success
                 success: function(data) {
                 console.log(data);
-                    
+                console.log(data.results[0].description); 
+                $('#eventCard').empty();
+                $('#eventCard').append('<h5 class="card-title">Events</h5>');
+                
+                for (i=0; i < data.results.length; i++){
+                    var link = data.results[i].event_url;
+                    var text = data.results[i].name;
+                    $('#eventCard').append('<div><a href="' + link + '"> '+ (i+1) + '. ' + text + '</a></div>');
+                }
                 }
             });
             // End of Events API - Meetup.com
