@@ -47,7 +47,7 @@ body, html {
 .card {
     border: none;
 }
-
-/* #background {
-    opacity: 0.5;
-} */
+#map {
+    height: 100%;
+    width: 100%;
+  }
