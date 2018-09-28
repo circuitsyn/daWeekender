@@ -2,7 +2,9 @@ body, html {
     height: 100%;
     /* overflow-y: scroll; */
     background: transparent url(../images/pattern.png) repeat top left;
-    background-position: top;
+    /* background-position: top; */
+    /* background-image: url('../images/3.jpg'); */
+    
 }
 
 .headerIMG {
@@ -46,13 +48,33 @@ body, html {
     border: none;
 }
 
-/* #navbarNav {
+#navbarNav {
     background-color: white;
-    padding: 10px 10px 10px 0px;
+    padding: 10px 0px 10px 0px;
     border-radius: 15px;
+    width: 20%;
     
-} */
+}
 
 .nav-pills {
     /* background-color: green; */
+}
+#map {
+    height: 100%;
+    width: 100%;
+  }
+
+.nav-link {
+    color: black !important;
+    opacity: 1 !important;
+}
+
+.badge-success {
+    color: white !important;
+}
+
+
+
+.btn-success {
+    font-weight: bold;
 }

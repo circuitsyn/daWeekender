@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>Results</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet"  href="assets/css/ourStory.css">
+    <!-- google maps  -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoDweaPm-2OM397JbMV3n1L-WqHM6ABOM"
+    async defer></script>
     <!-- <link rel="stylesheet" href="assets/css/landing.css"> -->
   </head>
   <body id="background">
@@ -19,10 +22,10 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-transparent navWrap">
             <a class="navbar-brand" href="results.html"><img class="headerIMG" src="assets/images/theweekender.png" height="140px" alt="The Weekender"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="collapse navbar-collapse justify-content-center navbar navbar" id="navbarNav">
                 <ul class="navbar-nav nav-pills font-weight-bold">
                     
                     <li class="nav-item">
@@ -48,10 +51,10 @@
         <div id="mainSection" class="row container">
             <div class="col-md-7 container">
                 <h1 id="mainLine">
-                    Victoria, BC..
+                    Dream Big!
                 </h1>
                 <h3 id="secondaryLine">
-                    Let's get your weekend trip started! Check out the weather and exciting details below!
+                    Let's get your weekend trip started! Search for a destination. Then check out the weather and exciting details below!
                 </h3>
 
             </div>
@@ -70,7 +73,9 @@
             <!--Card1-->
             <div class="col-md-4 d-flex justify-content-center">
                 <div class="card" style="width: 18rem;">
+                    <div id='map'>
                     <img class="card-img-top" src="assets/images/pic01.jpg" alt="Jarred Sutton">
+                </div>
                     <div class="card-body">
                         <h5 class="card-title">API 2</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -107,11 +112,14 @@
     </div>
 
     </div>
+    <!-- <div id="map"></div> -->
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/javascript/app.js"></script>
 
     </body>
