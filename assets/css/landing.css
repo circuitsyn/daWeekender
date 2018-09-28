@@ -16,9 +16,9 @@ body{
 	overflow-x: hidden;
 }
 
-.navbar {
+/* .navbar {
     opacity: 0.4;
-}
+} */
 
 #topic-form {
 	position: static;

@@ -1,7 +1,10 @@
-body {
+body, html {
     height: 100%;
-    background: lightgray;
-    /* overflow-x: scroll; */
+    /* overflow-y: scroll; */
+    background: transparent url(../images/pattern.png) repeat top left;
+    /* background-position: top; */
+    /* background-image: url('../images/3.jpg'); */
+    
 }
 
 .headerIMG {
@@ -40,3 +43,11 @@ body {
     padding-left: 0px;
     padding-right: 0px;
 }
+
+.card {
+    border: none;
+}
+
+/* #background {
+    opacity: 0.5;
+} */
