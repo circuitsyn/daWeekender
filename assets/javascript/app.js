@@ -157,7 +157,7 @@ $(document).ready(function() {
                 method: "GET"
             }).then(function(responseHikingInfo) {
                 //console.log(queryURL_Hiking);
-                //console.log(responseHikingInfo);
+                console.log(responseHikingInfo);
                 var numberOfTrails = responseHikingInfo.trails.length
                 $('#hikingCard').empty();
                 $('#hikingCard').append('<h5 class="card-title">Hiking Trails</h5>');
@@ -174,6 +174,37 @@ $(document).ready(function() {
             });
 
             // End of Hiking API ====================
+
+
+            // Start of Restaurant API ====================
+
+            var queryURL_Restaurant = 'https://developers.zomato.com/api/v2.1/search?count=15&lat='+lat+'&lon='+lng+'&radius='+maxDistance;
+
+            $.ajax({
+                url: queryURL_Restaurant,
+                method: "GET",
+                "headers": {
+                    "user-key": "484b921e03f7cc2c9335696b2d2ff5e3",
+                    "accept": "application/json"
+                }
+            }).then(function(responseRestaurantInfo) {
+                //console.log(queryURL_Restaurant);
+                //console.log(responseRestaurantInfo);
+                var numberOfRestaurants = responseRestaurantInfo.restaurants.length;
+                //console.log ('number of restaurant available within max distance: '+numberOfRestaurants);
+
+                $('#restaurantCard').empty();
+                $('#restaurantCard').append('<h5 class="card-title">Restaurants</h5>');
+                for (var i = 0; i < numberOfRestaurants; i++){
+                    var restaurantURL = responseRestaurantInfo.restaurants[i].restaurant.url;
+                    var restaurantName = responseRestaurantInfo.restaurants[i].restaurant.name;
+                    $('#restaurantCard').append('<div><a href="' + restaurantURL + '"> '+ (i+1) + '. ' + restaurantName + '</a></div>');
+   
+                    //console.log(restaurantName);
+                    //console.log(restaurantURL);
+                }
+            });
+            // End of Restaurant API ====================
 
     
     
