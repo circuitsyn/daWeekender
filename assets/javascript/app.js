@@ -103,7 +103,34 @@ $(document).ready(function() {
             });
             // end of Weather API -- openweathermap.com
             //========================================================================
-    
+            
+            // Start of Hiking API ====================
+
+            var maxDistance = 30;
+            var queryURL_Hiking = 'https://www.hikingproject.com/data/get-trails?lat='+lat+'&lon='+lng+'&maxDistance='+maxDistance+'&key=200364142-c73ec0ae2d02db6031cef492b6b86f45'
+            $.ajax({
+                url: queryURL_Hiking,
+                method: "GET"
+            }).then(function(responseHikingInfo) {
+                //console.log(queryURL_Hiking);
+                //console.log(responseHikingInfo);
+                var numberOfTrails = responseHikingInfo.trails.length
+                $('#hikingCard').empty();
+                $('#hikingCard').append('<h5 class="card-title">Hiking Trails</h5>');
+                //console.log ('number of trails available within max distance: '+numberOfTrails)
+                for (var i = 0; i < numberOfTrails; i++) {
+                    var locationURL = responseHikingInfo.trails[i].url;
+                    var locationName = responseHikingInfo.trails[i].name;
+                    $('#hikingCard').append('<div><a href="' + locationURL + '"> '+ (i+1) + '. ' + locationName + '</a></div>');
+                    //console.log(locationURL);
+                    //console.log(locationName);
+
+                }
+
+            });
+
+            // End of Hiking API ====================
+
     
     
             });
