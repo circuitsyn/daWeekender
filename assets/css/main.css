@@ -47,7 +47,34 @@ body, html {
 .card {
     border: none;
 }
+
+#navbarNav {
+    background-color: white;
+    padding: 10px 0px 10px 0px;
+    border-radius: 15px;
+    width: 20%;
+    
+}
+
+.nav-pills {
+    /* background-color: green; */
+}
 #map {
     height: 100%;
     width: 100%;
   }
+
+.nav-link {
+    color: black !important;
+    opacity: 1 !important;
+}
+
+.badge-success {
+    color: white !important;
+}
+
+
+
+.btn-success {
+    font-weight: bold;
+}
