@@ -61,7 +61,15 @@ $(document).ready(function() {
              }
              // call initMap funciton
              initMap();
-            //  $('#map').html(map);
+             
+             // adding direction link to map card ====================================
+
+             var dirLink = "https://www.google.com/maps/dir/?api=1&parameters&destination=" + lat + "," + lng;
+             // console log our link with searched lat and lng
+             console.log(dirLink);
+             // put our attributes to the map-direction anchor
+             $('#map-direction').attr("href", dirLink);
+             // end of adding direction link to map card =============================
     
             // end of google map and geocode api calls and functions
             
