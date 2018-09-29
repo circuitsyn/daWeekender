@@ -100,12 +100,14 @@ $(document).ready(function() {
              initMap();
              
              // adding direction link to map card ====================================
-
+             // variable to create the directions map dynamically 
              var dirLink = "https://www.google.com/maps/dir/?api=1&parameters&destination=" + lat + "," + lng;
+            // var to open map in a new tab
+             var newTab = "_blank";
              // console log our link with searched lat and lng
              console.log(dirLink);
              // put our attributes to the map-direction anchor
-             $('#map-direction').attr("href", dirLink);
+             $('#map-direction').attr("href", dirLink).attr("target", newTab);
              // end of adding direction link to map card =============================
     
             // end of google map and geocode api calls and functions
