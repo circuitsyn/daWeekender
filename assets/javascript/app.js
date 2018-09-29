@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+    //===================================================================
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyB5aFtlCItfykUqZf2FrKHOJMTLuXV6JQQ",
@@ -9,22 +9,32 @@ $(document).ready(function() {
         storageBucket: "theweekender-6c8c4.appspot.com",
         messagingSenderId: "830340126520"
     };
+   
+    //initializing firebase config
     firebase.initializeApp(config);
 
-     //initializing firebase config
-    firebase.initializeApp(config);
-    
     //Bring firebase down to connect for manipulation
     var database = firebase.database();
+
+    //receive data from firebase and store in variables
+    database.ref().on("child_added", function (snapshot) {
+    
+    searchTerm = snapshot.val().searchTermServ;
+    
+    //Append data to table
+    $('#resultCard').append('<button type="button" class="btn btn-success resultButton">' + searchTerm + '</button>')
+  
+    });
+    //End of Firebase Main
+    //====================================================================
 
     //Background Image JS
     
     var images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg'];
     $('#background').css({'background-image': 'url(assets/images/' + images[Math.floor(Math.random() * images.length)] + ')'});
     
-    });
     
-
+    
     //End of Background Image JS
        
        // start of google map and geocode api calls and functions
@@ -34,6 +44,17 @@ $(document).ready(function() {
        submitForm.on("click", function(event) {
        // Prevent page reload on submit
        event.preventDefault();
+
+       // -------firebase component insert------- 
+       // store value of search term in firebase variable
+       searchTerm = $("#search-input").val()
+       // push value to firebase
+       database.ref().push({
+            searchTermServ: searchTerm,
+       });
+       // --------------------------------------
+
+       
        // location varible
        var location = $("#search-input").val();
        
@@ -93,7 +114,6 @@ $(document).ready(function() {
                 success: function(data) {
                 console.log(data);
 
-                console.log(data.results[0].description); 
                 $('#eventCard').empty();
                 $('#eventCard').append('<h5 class="card-title">Events</h5>');
                 
@@ -126,6 +146,6 @@ $(document).ready(function() {
        
     
        });
-          
+}); 
     
        
