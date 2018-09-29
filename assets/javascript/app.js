@@ -1,5 +1,21 @@
 $(document).ready(function() {
 
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyB5aFtlCItfykUqZf2FrKHOJMTLuXV6JQQ",
+        authDomain: "theweekender-6c8c4.firebaseapp.com",
+        databaseURL: "https://theweekender-6c8c4.firebaseio.com",
+        projectId: "theweekender-6c8c4",
+        storageBucket: "theweekender-6c8c4.appspot.com",
+        messagingSenderId: "830340126520"
+    };
+    firebase.initializeApp(config);
+
+     //initializing firebase config
+    firebase.initializeApp(config);
+    
+    //Bring firebase down to connect for manipulation
+    var database = firebase.database();
 
     //Background Image JS
     
