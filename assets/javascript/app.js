@@ -91,14 +91,25 @@ $(document).ready(function() {
             });
             // End of Events API - Meetup.com
             //==========================================================================
+             
+            //start of Weather API -- openweathermap.com
+            var URL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lng + "&units=imperial&appid=15db84bc602de5658332f59736c7f92c"
+            //creating AJAX call for when search is executed
+            $.ajax({
+                url: URL,
+                method: "GET"
+            }).then(function (data) {
+                console.log(data)
+            });
+            // end of Weather API -- openweathermap.com
+            //========================================================================
     
     
     
-    
-       });
+            });
        
     
        });
           
     
-       });
+       
