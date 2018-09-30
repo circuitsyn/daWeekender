@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet"  href="assets/css/ourStory.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/weather.css" />
+
     <!-- google maps  -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoDweaPm-2OM397JbMV3n1L-WqHM6ABOM"
     async defer></script>
@@ -59,7 +61,51 @@
 
             </div>
             <div class="col-md-5 container">
-                <img id="storyIMG" src="assets/images/travel.png" alt="travel globe">
+                <!-- <img id="storyIMG" src="assets/images/travel.png" alt="travel globe"> -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-md-offset-12">
+                            <div class="weather">
+                                <div class="current">
+                                    <div class="info">
+                                        <div>&nbsp;</div>
+                                        <div class="city"><small><small>CITY:</small></small></div>
+                                        <div class="temp">67&deg; <small>F</small></div>
+                                        <div class="wind"><small><small>WIND:</small></small></div>
+                                        <div>&nbsp;</div>
+                                    </div>
+                                    <div class="icon">
+                                        <span class="wi-day-sunny"></span>
+                                    </div>
+                                </div>
+                                <div class="future">
+                                    <div class="day">
+                                        <h3>Mon</h3>
+                                    </div>
+                                    <div class="day">
+                                        <h3>Tue</h3>
+                                    </div>
+                                    <div class="day">
+                                        <h3>Wed</h3>
+                                    <div class="day">
+                                        <h3>Thurs</h3>
+                                    </div>
+                                    <div class="day">
+                                        <h3>Fri</h3>
+                                    </div>
+                                    <div class="day">
+                                        <h3>Sat</h3>
+                                    </div>
+                                    <div class="day">
+                                        <h3>Sun</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
 
         </div>
@@ -120,6 +166,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- moment.js link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js" integrity="sha256-ABVkpwb9K9PxubvRrHMkk6wmWcIHUE9eBxNZLXYQ84k=" crossorigin="anonymous"></script> 
     <script src="assets/javascript/app.js"></script>
 
     </body>

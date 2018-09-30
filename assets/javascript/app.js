@@ -92,16 +92,103 @@ $(document).ready(function() {
             // End of Events API - Meetup.com
             //==========================================================================
              
-            //start of Weather API -- openweathermap.com
-            var URL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lng + "&units=imperial&appid=15db84bc602de5658332f59736c7f92c"
+            //start of Weather API -- darksky.net
+
+            var today = moment();
+                console.log(today["_d"].toString().substring(0,3));
+                
+                var dayOfWeek = today["_d"].toString().substring(0,3);
+
+                    if (dayOfWeek == "Sat" || dayOfWeek == "Sun") {
+                        var requestDay = moment().add(3, "days").unix();
+                        console.log("isweekend");
+
+                        var friRequestDay = moment().add(3, "days").day(5);
+                        var satRequestDay = moment().add(3, "days").day(6);
+                        var sunRequestDay = moment().add(3, "days").day(7);
+                            console.log(satRequestDay);
+
+                    }
+                    else {
+                        var friRequestDay = moment().day(5);
+                        var satRequestDay = moment().day(6);
+                        var sunRequestDay = moment().day(7);
+                            console.log(satRequestDay);
+                        
+
+                        console.log("isnotweekend");
+                    }
+
+                    //add fri,sat,sun requestDay = itself.unix()
+
+
+
             //creating AJAX call for when search is executed
             $.ajax({
-                url: URL,
+                url:  "https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/79f28cba6a99105fef42cde285bc6226/" + lat + "," + lng + "," + requestDay + "+[168]",
                 method: "GET"
             }).then(function (data) {
-                console.log(data)
+                console.log(data);
+
+                // console.log(data.currently.summary);
+                // console.log(data.currently.temperature);
+                // console.log(data.daily.summary);
+                // console.log(data.daily.data[0].precipType);
+                // console.log(data.daily.data.temperatureHigh);
+                // console.log(data.daily.data.temperatureLow);
+                
+                // var utcSeconds = data.daily.data[0].time;
+                // var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
+                // d.setUTCSeconds(utcSeconds);
+                // console.log(d);
+
+                var weekendForecast = {
+                    friday: {
+                        precipType: "",
+                        temperatureHigh: 0,
+                        temperatureLow: 0
+                    },
+                    saturday: {
+                        precipType: "",
+                        temperatureHigh: 0,
+                        temperatureLow: 0
+                    },
+                    sunday: {
+                        precipType: "",
+                        temperatureHigh: 0,
+                        temperatureLow: 0
+                    }
+                }
+
+                var dailyResponse = data.daily.data;
+                console.log(dailyResponse[3]);
+
+                for (var i = 0; i < dailyResponse.length; i++) {
+                    console.log(dailyResponse[i]);
+                    var utcSeconds = dailyResponse[i].time;
+                    var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
+                    d.setUTCSeconds(utcSeconds);
+                    console.log(d);
+
+
+
+
+
+                    
+
+
+
+                }
+
+
+               
+            
+
+                
             });
-            // end of Weather API -- openweathermap.com
+
+
+            // end of Weather API -- darksky.net
             //========================================================================
     
     
