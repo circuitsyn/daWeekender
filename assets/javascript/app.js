@@ -130,7 +130,7 @@ $(document).ready(function() {
                 for (i=0; i < data.results.length; i++){
                     var link = data.results[i].event_url;
                     var text = data.results[i].name;
-                    $('#eventCard').append('<div><a href="' + link + '"> '+ (i+1) + '. ' + text + '</a></div>');
+                    $('#eventCard').append('<div class="row container"><div class="col-md-1"><img class="resultIcon" src="assets/images/eventIcon.png" alt="result icon"></div><div class="col-md3"> <a href="' + link + '"> '+ (i+1) + '. ' + text + '</a></div></div>');
                 }
 
                 }
