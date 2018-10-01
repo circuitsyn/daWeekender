@@ -12,7 +12,16 @@
     margin: auto;
 }
 
+/*styling to give more room to results*/
 #eventCard {
+    padding: 10px;
+}
+/*styling to give more room to results*/
+#hikingCard {
+    padding: 10px;
+}
+/*styling to give more room to results*/
+#restaurantCard {
     padding: 10px;
 }
 
