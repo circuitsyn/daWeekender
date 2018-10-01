@@ -1,15 +1,18 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>Results</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <!-- Bootstrap CSS -->
+    <link rel="shortcut icon" href="assets/images/favicon.png"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/results.css">
     <link rel="stylesheet"  href="assets/css/ourStory.css">
+
     <!-- google maps  -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoDweaPm-2OM397JbMV3n1L-WqHM6ABOM"
     async defer></script>
@@ -25,11 +28,11 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <div class="collapse navbar-collapse justify-content-center navbar navbar" id="navbarNav">
                 <ul class="navbar-nav nav-pills font-weight-bold">
                     
                     <li class="nav-item">
-                    <a class="nav-link active" href="results.html">Results</a>
+                    <a class="nav-link badge-success" href="results.html">Results</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="ourStory.html">Our Story</a>
@@ -40,7 +43,7 @@
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <input id="search-input" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button id="search-button" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <button id="search-button" class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>
         </nav>
@@ -51,10 +54,10 @@
         <div id="mainSection" class="row container">
             <div class="col-md-7 container">
                 <h1 id="mainLine">
-                    Victoria, BC..
+                    Dream Big!
                 </h1>
                 <h3 id="secondaryLine">
-                    Let's get your weekend trip started! Check out the weather and exciting details below!
+                    Let's get your weekend trip started! Search for a destination. Then check out the weather and exciting details below!
                 </h3>
 
             </div>
@@ -67,19 +70,60 @@
 
 
 
-    <!-- Card Section -->
+    <!-- Card Section Row 1 -->
     <div id="cardSection" class="row container">
         
-            <!--Card1-->
+            <!-- Location API - Google -->
             <div class="col-md-4 d-flex justify-content-center">
                 <div class="card" style="width: 18rem;">
                     <div id='map'>
-                    <img class="card-img-top" src="assets/images/pic01.jpg" alt="Jarred Sutton">
+                    <img class="card-img-top" src="assets/images/map.png" alt="Map">
                 </div>
-                    <div class="card-body">
-                        <h5 class="card-title">API 2</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Learn more</a>
+                <div class="card-body">
+                    <h5 class="card-title">Location</h5>
+                    <p class="card-text">Can't plan your weekend without knowing where you are going.</p>
+                    <a id='map-direction' class="btn btn-primary">Directions to Destination</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Restaurants - Zomato API -->
+            <div class="col-md-4 d-flex justify-content-center">   
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="assets/images/spaguetti.png" alt="Card image cap">
+                    <div id="restaurantCard" class="card-body">
+                        <h5 class="card-title">Restaurants</h5>
+                        <p class="card-text">Checkout some of the local cuisine!</p>
+                        <!-- <a href="#" class="btn btn-primary">Learn more</a> -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Events API - Meetup.com -->
+            <div class="col-md-4 d-flex justify-content-center container">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="assets/images/calendar.png" alt="Card image cap">
+                    <div id="eventCard" class="card-body">
+                        <h5 class="card-title">Events</h5>
+                        <p class="card-text">Local events in the area directly setup and run by locals themselves!</p>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+         <!-- Second Row of Cards -->
+        <div id="cardSection" class="row container">
+
+            <!--Hiking-->
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="card" style="width: 18rem;">
+                    <div>
+                    <img class="card-img-top" src="assets/images/hiking.png" alt="hiking_trails">
+                </div>
+                    <div id="hikingCard" class="card-body">
+                        <h5 class="card-title">Hiking</h5>
+                        <p class="card-text">Explore the beauty of nature hiking through some of the most exciting trails</p>
                     </div>
                 </div>
             </div>
@@ -87,38 +131,40 @@
             <!--Card2-->
             <div class="col-md-4 d-flex justify-content-center">   
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="assets/images/pic02.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="assets/images/spaguetti.png" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">API 3</h5>
+                        <h5 class="card-title">API 6</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         <a href="#" class="btn btn-primary">Learn more</a>
                     </div>
                 </div>
             </div>
 
-            <!--Card3-->
+            <!-- Recent Searches -->
             <div class="col-md-4 d-flex justify-content-center">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="assets/images/pic03.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">API 4</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Learn more</a>
+                    <img class="card-img-top" src="assets/images/recentSearches.png" alt="Recent Searches">
+                    <div id="resultCard" class="card-body">
+                        <h5 class="card-title">Recent Searches</h5>
+                        <p class="card-text">Wan't to rerun a search? Just click on one below!</p>
+                        <div class="resultList">
+
+                        </div>
+                        
                     </div>
                 </div>
-            </div>
+
+        </div>
 
                     
     </div>
-
-    </div>
-    <!-- <div id="map"></div> -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/javascript/app.js"></script>
 

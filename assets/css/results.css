@@ -1,0 +1,31 @@
+.resultIcon {
+    height: 27px;
+    width: 27px;
+}
+
+.text-truncate {
+    display: block
+}
+
+#resultEntry {
+    padding: 0px;
+    margin: auto;
+}
+
+#eventCard {
+    padding: 10px;
+}
+
+.resultWrapper {
+    padding: 0px;
+    
+}
+
+.linkMod {
+    color: green;
+    font-weight: bold;
+}
+
+.linkMod:hover {
+    color: green;
+}
