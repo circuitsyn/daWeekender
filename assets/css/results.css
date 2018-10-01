@@ -18,5 +18,14 @@
 
 .resultWrapper {
     padding: 0px;
-    /* width:100%; */
+    
+}
+
+.linkMod {
+    color: green;
+    font-weight: bold;
+}
+
+.linkMod:hover {
+    color: green;
 }
