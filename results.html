@@ -10,6 +10,7 @@
     <link rel="shortcut icon" href="assets/images/favicon.png"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/results.css">
     <link rel="stylesheet"  href="assets/css/ourStory.css">
 
     <!-- google maps  -->
@@ -72,7 +73,7 @@
     <!-- Card Section Row 1 -->
     <div id="cardSection" class="row container">
         
-            <!--Card1-->
+            <!-- Location API - Google -->
             <div class="col-md-4 d-flex justify-content-center">
                 <div class="card" style="width: 18rem;">
                     <div id='map'>
@@ -86,20 +87,20 @@
                 </div>
             </div>
 
-            <!--Restaurants-->
+            <!-- Restaurants - Zomato API -->
             <div class="col-md-4 d-flex justify-content-center">   
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="assets/images/spaguetti.png" alt="restaurants">
+                    <img class="card-img-top" src="assets/images/spaguetti.png" alt="Card image cap">
                     <div id="restaurantCard" class="card-body">
                         <h5 class="card-title">Restaurants</h5>
-                        <p class="card-text">Looking for something yummy? Check out the unique cuisines offered by the local restaurants.</p>
-                        
+                        <p class="card-text">Checkout some of the local cuisine!</p>
+                        <!-- <a href="#" class="btn btn-primary">Learn more</a> -->
                     </div>
                 </div>
             </div>
 
             <!-- Events API - Meetup.com -->
-            <div class="col-md-4 d-flex justify-content-center">
+            <div class="col-md-4 d-flex justify-content-center container">
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="assets/images/calendar.png" alt="Card image cap">
                     <div id="eventCard" class="card-body">
@@ -117,7 +118,7 @@
             <!--Hiking-->
             <div class="col-md-4 d-flex justify-content-center">
                 <div class="card" style="width: 18rem;">
-                    <div id='map'>
+                    <div>
                     <img class="card-img-top" src="assets/images/hiking.png" alt="hiking_trails">
                 </div>
                     <div id="hikingCard" class="card-body">

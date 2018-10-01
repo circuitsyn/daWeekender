@@ -64,6 +64,7 @@ $(document).ready(function() {
            method: "GET"
        }).then(function (response) {
            // log full response
+           console.log("Location API Data:");
            console.log(response);
            // pull lat and lng
            var lat = response.results[0].geometry.location.lat
@@ -122,6 +123,7 @@ $(document).ready(function() {
                 dataType: 'jsonp',
                 // Function to call on success
                 success: function(data) {
+                console.log("Events API Data:");
                 console.log(data);
 
                 $('#eventCard').empty();
@@ -130,7 +132,9 @@ $(document).ready(function() {
                 for (i=0; i < data.results.length; i++){
                     var link = data.results[i].event_url;
                     var text = data.results[i].name;
-                    $('#eventCard').append('<div><a href="' + link + '"> '+ (i+1) + '. ' + text + '</a></div>');
+                    
+                    //apppend event api events to card
+                    $('#eventCard').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/eventIcon.png" alt="result icon"><a class="linkMod" href="' + link + '">' + text + '</a></div></div>');
                 }
 
                 }
@@ -145,6 +149,7 @@ $(document).ready(function() {
                 url: URL,
                 method: "GET"
             }).then(function (data) {
+                console.log("Weather API Data:");
                 console.log(data)
             });
             // end of Weather API -- openweathermap.com
@@ -158,18 +163,19 @@ $(document).ready(function() {
                 url: queryURL_Hiking,
                 method: "GET"
             }).then(function(responseHikingInfo) {
+                debugger;
                 //console.log(queryURL_Hiking);
+                console.log("Hiking API Data:");
                 console.log(responseHikingInfo);
-                var numberOfTrails = responseHikingInfo.trails.length
+                var numberOfTrails = responseHikingInfo.trails.length;
                 $('#hikingCard').empty();
                 $('#hikingCard').append('<h5 class="card-title">Hiking Trails</h5>');
                 //console.log ('number of trails available within max distance: '+numberOfTrails)
                 for (var i = 0; i < numberOfTrails; i++) {
                     var locationURL = responseHikingInfo.trails[i].url;
                     var locationName = responseHikingInfo.trails[i].name;
-                    $('#hikingCard').append('<div><a href="' + locationURL + '"> '+ (i+1) + '. ' + locationName + '</a></div>');
-                    //console.log(locationURL);
-                    //console.log(locationName);
+                    // $('#hikingCard').append('<div><a href="' + locationURL + '"> '+ (i+1) + '. ' + locationName + '</a></div>');
+                    $('#hikingCard').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/tree.png" alt="result icon"><a class="linkMod" href="' + locationURL + '">' + locationName + '</a></div></div>');
 
                 }
 
@@ -191,7 +197,8 @@ $(document).ready(function() {
                 }
             }).then(function(responseRestaurantInfo) {
                 //console.log(queryURL_Restaurant);
-                //console.log(responseRestaurantInfo);
+                console.log("Retaurant API Data:");
+                console.log(responseRestaurantInfo);
                 var numberOfRestaurants = responseRestaurantInfo.restaurants.length;
                 //console.log ('number of restaurant available within max distance: '+numberOfRestaurants);
 
@@ -200,10 +207,10 @@ $(document).ready(function() {
                 for (var i = 0; i < numberOfRestaurants; i++){
                     var restaurantURL = responseRestaurantInfo.restaurants[i].restaurant.url;
                     var restaurantName = responseRestaurantInfo.restaurants[i].restaurant.name;
-                    $('#restaurantCard').append('<div><a href="' + restaurantURL + '"> '+ (i+1) + '. ' + restaurantName + '</a></div>');
+                    // $('#restaurantCard').append('<div><a href="' + restaurantURL + '"> '+ (i+1) + '. ' + restaurantName + '</a></div>');
+                    $('#restaurantCard').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/hamburger.png" alt="result icon"><a class="linkMod" href="' + restaurantURL + '">' + restaurantName + '</a></div></div>');
    
-                    //console.log(restaurantName);
-                    //console.log(restaurantURL);
+                    
                 }
             });
             // End of Restaurant API ====================
