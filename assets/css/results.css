@@ -1,4 +1,22 @@
-/* .resultIcon {
-    height: 5%;
-    width: 5%;
-} */
+.resultIcon {
+    height: 27px;
+    width: 27px;
+}
+
+.text-truncate {
+    display: block
+}
+
+#resultEntry {
+    padding: 0px;
+    margin: auto;
+}
+
+#eventCard {
+    padding: 10px;
+}
+
+.resultWrapper {
+    padding: 0px;
+    /* width:100%; */
+}

@@ -64,6 +64,7 @@ $(document).ready(function() {
            method: "GET"
        }).then(function (response) {
            // log full response
+           console.log("Location API Data:");
            console.log(response);
            // pull lat and lng
            var lat = response.results[0].geometry.location.lat
@@ -122,6 +123,7 @@ $(document).ready(function() {
                 dataType: 'jsonp',
                 // Function to call on success
                 success: function(data) {
+                console.log("Events API Data:");
                 console.log(data);
 
                 $('#eventCard').empty();
@@ -130,7 +132,9 @@ $(document).ready(function() {
                 for (i=0; i < data.results.length; i++){
                     var link = data.results[i].event_url;
                     var text = data.results[i].name;
-                    $('#eventCard').append('<div class="row container"><div class="col-md-1"><img class="resultIcon" src="assets/images/eventIcon.png" alt="result icon"></div><div class="col-md3"> <a href="' + link + '"> '+ (i+1) + '. ' + text + '</a></div></div>');
+                    // $('#eventCard').append('<div class="row container"><div><img class="resultIcon p-1" src="assets/images/eventIcon.png" alt="result icon"></div><div> <a href="' + link + '"><p class="text-truncate word-wrap">' + text + '</p></a></div></div>');
+
+                    $('#eventCard').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/eventIcon.png" alt="result icon"><p>' + text + '</p></div></div>');
                 }
 
                 }
@@ -145,6 +149,7 @@ $(document).ready(function() {
                 url: URL,
                 method: "GET"
             }).then(function (data) {
+                console.log("Weather API Data:");
                 console.log(data)
             });
             // end of Weather API -- openweathermap.com
@@ -159,6 +164,7 @@ $(document).ready(function() {
                 method: "GET"
             }).then(function(responseHikingInfo) {
                 //console.log(queryURL_Hiking);
+                console.log("Hiking API Data:");
                 console.log(responseHikingInfo);
                 var numberOfTrails = responseHikingInfo.trails.length
                 $('#hikingCard').empty();
@@ -191,7 +197,8 @@ $(document).ready(function() {
                 }
             }).then(function(responseRestaurantInfo) {
                 //console.log(queryURL_Restaurant);
-                //console.log(responseRestaurantInfo);
+                console.log("Retaurant API Data:");
+                console.log(responseRestaurantInfo);
                 var numberOfRestaurants = responseRestaurantInfo.restaurants.length;
                 //console.log ('number of restaurant available within max distance: '+numberOfRestaurants);
 
