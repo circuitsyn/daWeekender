@@ -14,7 +14,7 @@
 
 /*styling to give more room to results*/
 #eventCard {
-    padding: 10px;
+    padding: 10px !important;
 }
 /*styling to give more room to results*/
 #hikingCard {
@@ -37,4 +37,9 @@
 
 .linkMod:hover {
     color: green;
+}
+
+.resultButton {
+    margin-top: 2%;
+    margin-bottom: 2%;
 }

@@ -76,4 +76,5 @@ body, html {
 
 .btn-success {
     font-weight: bold;
+    color: white !important;
 }

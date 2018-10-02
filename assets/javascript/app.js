@@ -15,14 +15,14 @@ $(document).ready(function() {
 
     //Bring firebase down to connect for manipulation
     var database = firebase.database();
-
-    //receive data from firebase and store in variables
-    database.ref().on("child_added", function (snapshot) {
+    
+    //receive data from firebase and store in variables - limit to 5 recent searches
+    database.ref('/searches').limitToLast(5).on("child_added", function (snapshot) {
     
     searchTerm = snapshot.val().searchTermServ;
-    
-    //Append data to table
-    $('#resultCard').append('<button type="button" class="btn btn-success resultButton">' + searchTerm + '</button>')
+        
+    //Append data to results card
+    $('#recentSearchesArea').append('<button id="search-button" type="button" class="btn btn-success resultButton">' + searchTerm + '</button><br>')
   
     });
     //End of Firebase Main
@@ -49,7 +49,7 @@ $(document).ready(function() {
        // store value of search term in firebase variable
        searchTerm = $("#search-input").val()
        // push value to firebase
-       database.ref().push({
+       database.ref('/searches').push({
             searchTermServ: searchTerm,
        });
        // --------------------------------------
@@ -126,15 +126,15 @@ $(document).ready(function() {
                 console.log("Events API Data:");
                 console.log(data);
 
-                $('#eventCard').empty();
-                $('#eventCard').append('<h5 class="card-title">Events</h5>');
+                // $('#resultArea').empty();
+                // $('#resultArea').append('<h5 class="card-title">Events</h5>');
                 
                 for (i=0; i < data.results.length; i++){
                     var link = data.results[i].event_url;
                     var text = data.results[i].name;
                     
                     //apppend event api events to card
-                    $('#eventCard').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/eventIcon.png" alt="result icon"><a class="linkMod" href="' + link + '">' + text + '</a></div></div>');
+                    $('#eventResultArea').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/eventIcon.png" alt="result icon"><a class="linkMod" href="' + link + '"' + ' target="_blank">' + text + '</a></div></div>');
                 }
 
                 }
@@ -163,19 +163,18 @@ $(document).ready(function() {
                 url: queryURL_Hiking,
                 method: "GET"
             }).then(function(responseHikingInfo) {
-                debugger;
+                
                 //console.log(queryURL_Hiking);
                 console.log("Hiking API Data:");
                 console.log(responseHikingInfo);
                 var numberOfTrails = responseHikingInfo.trails.length;
-                $('#hikingCard').empty();
-                $('#hikingCard').append('<h5 class="card-title">Hiking Trails</h5>');
+                
                 //console.log ('number of trails available within max distance: '+numberOfTrails)
                 for (var i = 0; i < numberOfTrails; i++) {
                     var locationURL = responseHikingInfo.trails[i].url;
                     var locationName = responseHikingInfo.trails[i].name;
                     // $('#hikingCard').append('<div><a href="' + locationURL + '"> '+ (i+1) + '. ' + locationName + '</a></div>');
-                    $('#hikingCard').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/tree.png" alt="result icon"><a class="linkMod" href="' + locationURL + '">' + locationName + '</a></div></div>');
+                    $('#hikingResultsArea').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/tree.png" alt="result icon"><a class="linkMod" href="' + locationURL + '"' + ' target="_blank">' + locationName + '</a></div></div>');
 
                 }
 
@@ -202,13 +201,13 @@ $(document).ready(function() {
                 var numberOfRestaurants = responseRestaurantInfo.restaurants.length;
                 //console.log ('number of restaurant available within max distance: '+numberOfRestaurants);
 
-                $('#restaurantCard').empty();
-                $('#restaurantCard').append('<h5 class="card-title">Restaurants</h5>');
+                // $('#restaurantCard').empty();
+                // $('#restaurantCard').append('<h5 class="card-title">Restaurants</h5>');
                 for (var i = 0; i < numberOfRestaurants; i++){
                     var restaurantURL = responseRestaurantInfo.restaurants[i].restaurant.url;
                     var restaurantName = responseRestaurantInfo.restaurants[i].restaurant.name;
                     // $('#restaurantCard').append('<div><a href="' + restaurantURL + '"> '+ (i+1) + '. ' + restaurantName + '</a></div>');
-                    $('#restaurantCard').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/hamburger.png" alt="result icon"><a class="linkMod" href="' + restaurantURL + '">' + restaurantName + '</a></div></div>');
+                    $('#restaurantResultsArea').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/hamburger.png" alt="result icon"><a class="linkMod" href="' + restaurantURL + '"' + ' target="_blank">' + restaurantName + '</a></div></div>');
    
                     
                 }
