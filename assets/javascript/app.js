@@ -15,12 +15,14 @@ $(document).ready(function() {
 
     //Bring firebase down to connect for manipulation
     var database = firebase.database();
-
+    // var pastResults = [];
     //receive data from firebase and store in variables
     database.ref().on("child_added", function (snapshot) {
     
     searchTerm = snapshot.val().searchTermServ;
-    
+    //method for shifting a result out and a new result in
+    // pastResults.shift());
+    // pastResults.push(searchTerm);
     //Append data to table
     $('#resultCard').append('<button type="button" class="btn btn-success resultButton">' + searchTerm + '</button>')
   
@@ -134,7 +136,7 @@ $(document).ready(function() {
                     var text = data.results[i].name;
                     
                     //apppend event api events to card
-                    $('#eventCard').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/eventIcon.png" alt="result icon"><a class="linkMod" href="' + link + '">' + text + '</a></div></div>');
+                    $('#eventCard').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/eventIcon.png" alt="result icon"><a class="linkMod" href="' + link + '"' + ' target="_blank">' + text + '</a></div></div>');
                 }
 
                 }
@@ -163,7 +165,7 @@ $(document).ready(function() {
                 url: queryURL_Hiking,
                 method: "GET"
             }).then(function(responseHikingInfo) {
-                debugger;
+                
                 //console.log(queryURL_Hiking);
                 console.log("Hiking API Data:");
                 console.log(responseHikingInfo);
@@ -175,7 +177,7 @@ $(document).ready(function() {
                     var locationURL = responseHikingInfo.trails[i].url;
                     var locationName = responseHikingInfo.trails[i].name;
                     // $('#hikingCard').append('<div><a href="' + locationURL + '"> '+ (i+1) + '. ' + locationName + '</a></div>');
-                    $('#hikingCard').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/tree.png" alt="result icon"><a class="linkMod" href="' + locationURL + '">' + locationName + '</a></div></div>');
+                    $('#hikingCard').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/tree.png" alt="result icon"><a class="linkMod" href="' + locationURL + '"' + ' target="_blank">' + locationName + '</a></div></div>');
 
                 }
 
@@ -208,7 +210,7 @@ $(document).ready(function() {
                     var restaurantURL = responseRestaurantInfo.restaurants[i].restaurant.url;
                     var restaurantName = responseRestaurantInfo.restaurants[i].restaurant.name;
                     // $('#restaurantCard').append('<div><a href="' + restaurantURL + '"> '+ (i+1) + '. ' + restaurantName + '</a></div>');
-                    $('#restaurantCard').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/hamburger.png" alt="result icon"><a class="linkMod" href="' + restaurantURL + '">' + restaurantName + '</a></div></div>');
+                    $('#restaurantCard').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/hamburger.png" alt="result icon"><a class="linkMod" href="' + restaurantURL + '"' + ' target="_blank">' + restaurantName + '</a></div></div>');
    
                     
                 }
