@@ -13,7 +13,7 @@
 }
 
 #eventCard {
-    padding: 10px;
+    padding: 10px !important;
 }
 
 .resultWrapper {
@@ -28,4 +28,9 @@
 
 .linkMod:hover {
     color: green;
+}
+
+.resultButton {
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
