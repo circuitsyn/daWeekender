@@ -36,6 +36,7 @@ $(document).ready(function() {
     
     
     //End of Background Image JS
+    //======================================================================
        
        // start of google map and geocode api calls and functions
        // grab our search button ID
