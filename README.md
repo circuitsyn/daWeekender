@@ -1,5 +1,5 @@
-# daWeekender
-
+# The Weekender
+![TheWeekender_Icon](assets/images/theweekender.png)
 Planning a weekend getaway?  The Weekender was conceived as a way to pull all the information you need for your weekend trip into one web application.  
 
 
