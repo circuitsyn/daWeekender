@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <!-- Bootstrap CSS -->
+    <link rel="shortcut icon" href="assets/images/favicon.png"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/results.css">
     <link rel="stylesheet"  href="assets/css/ourStory.css">
     <link rel="stylesheet" type="text/css" href="assets/css/weather.css" />
 
@@ -110,19 +112,71 @@
 
 
 
-    <!-- Card Section -->
+    <!-- Card Section Row 1 -->
     <div id="cardSection" class="row container">
         
-            <!--Card1-->
+            <!-- Location API - Google -->
             <div class="col-md-4 d-flex justify-content-center">
                 <div class="card" style="width: 18rem;">
                     <div id='map'>
-                    <img class="card-img-top" src="assets/images/map.png" alt="Jarred Sutton">
+                    <img class="card-img-top" src="assets/images/map.png" alt="Map">
                 </div>
-                    <div class="card-body">
-                        <h5 class="card-title">API 2</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Learn more</a>
+                <div class="card-body">
+                    <h5 class="card-title">Location</h5>
+                    <p class="card-text">Can't plan your weekend without knowing where you are going.</p>
+                    <div class="text-center">
+                        <a id='map-direction' class="btn btn-success">Directions to Destination</a>
+                    </div>  
+                    </div>
+                </div>
+            </div>
+
+            <!-- Restaurants - Zomato API -->
+            <div class="col-md-4 d-flex justify-content-center">   
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="assets/images/spaguetti.png" alt="Card image cap">
+                    <div id="eventCard" class="card-body">
+                        <h5 class="card-title">Restaurants</h5>
+                        <p class="card-text">Checkout some of the local cuisine!</p>
+                        <div id="restaurantResultsArea" class="resultList">
+                    
+                        </div> 
+                        <!-- <a href="#" class="btn btn-primary">Learn more</a> -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Events API - Meetup.com -->
+            <div class="col-md-4 d-flex justify-content-center container">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="assets/images/calendar.png" alt="Card image cap">
+                    <div id="eventCard" class="card-body">
+                        <h5 class="card-title">Events</h5>
+                        <p class="card-text">Local events in the area directly setup and run by locals themselves!</p>
+                        <div id="eventResultArea" class="resultList">
+                    
+                        </div>  
+                    </div>
+                    
+                </div>
+            </div>
+
+
+         <!-- Second Row of Cards -->
+        <div id="cardSection" class="row container">
+
+            <!--Hiking-->
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="card" style="width: 18rem;">
+                    <div>
+                    <img class="card-img-top" src="assets/images/hiking.png" alt="hiking_trails">
+                </div>
+                    <div id="eventCard" class="card-body">
+                        <h5 class="card-title">Hiking</h5>
+                        <p class="card-text">Explore the beauty of nature hiking through some of the most exciting trails</p>
+                        <div id="hikingResultsArea" class="resultList">
+                    
+                        </div> 
                     </div>
                 </div>
             </div>
@@ -132,36 +186,38 @@
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="assets/images/spaguetti.png" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">API 3</h5>
+                        <h5 class="card-title">API 6</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Learn more</a>
+                        <!-- <a href="#" class="btn btn-primary">Learn more</a> -->
                     </div>
                 </div>
             </div>
 
-            <!-- Events API - Meetup.com -->
+            <!-- Recent Searches -->
             <div class="col-md-4 d-flex justify-content-center">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="assets/images/calendar.png" alt="Card image cap">
-                    <div id="eventCard" class="card-body">
-                        <h5 class="card-title">Events</h5>
-                        <p class="card-text">Local events in the area directly setup and run by locals themselves!</p>
-                        
-                    </div>
-                </div>
-            </div>
-
+                    <img class="card-img-top" src="assets/images/recentSearches.png" alt="Recent Searches">
+                    <div id="resultCard" class="card-body">
+                        <h5 class="card-title">Top 5 Recent Searches</h5>
+                        <p class="card-text">Wan't to rerun a search? Just click on one below!</p>
+                        <div id="recentSearchesArea" class="resultList">
                     
-    </div>
+                        </div> 
+                    </div>
+                </div>    
+                                      
+                
+            </div>    
+        </div>
 
     </div>
-    <!-- <div id="map"></div> -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- moment.js link -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js" integrity="sha256-ABVkpwb9K9PxubvRrHMkk6wmWcIHUE9eBxNZLXYQ84k=" crossorigin="anonymous"></script> 
