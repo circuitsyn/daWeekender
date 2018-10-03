@@ -129,12 +129,13 @@ $(document).ready(function() {
 
                 // $('#resultArea').empty();
                 // $('#resultArea').append('<h5 class="card-title">Events</h5>');
-                
+                $('#eventResultArea').empty();
                 for (i=0; i < data.results.length; i++){
                     var link = data.results[i].event_url;
                     var text = data.results[i].name;
                     
                     //apppend event api events to card
+                    
                     $('#eventResultArea').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/eventIcon.png" alt="result icon"><a class="linkMod" href="' + link + '"' + ' target="_blank">' + text + '</a></div></div>');
                 }
 
@@ -169,12 +170,13 @@ $(document).ready(function() {
                 console.log("Hiking API Data:");
                 console.log(responseHikingInfo);
                 var numberOfTrails = responseHikingInfo.trails.length;
-                
+                $('#hikingResultsArea').empty();
                 //console.log ('number of trails available within max distance: '+numberOfTrails)
                 for (var i = 0; i < numberOfTrails; i++) {
                     var locationURL = responseHikingInfo.trails[i].url;
                     var locationName = responseHikingInfo.trails[i].name;
                     // $('#hikingCard').append('<div><a href="' + locationURL + '"> '+ (i+1) + '. ' + locationName + '</a></div>');
+                    
                     $('#hikingResultsArea').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/tree.png" alt="result icon"><a class="linkMod" href="' + locationURL + '"' + ' target="_blank">' + locationName + '</a></div></div>');
 
                 }
@@ -185,8 +187,7 @@ $(document).ready(function() {
 
 
             // Start of Restaurant API ====================
-
-            var queryURL_Restaurant = 'https://developers.zomato.com/api/v2.1/search?count=15&lat='+lat+'&lon='+lng+'&radius='+maxDistance;
+            var queryURL_Restaurant = 'https://developers.zomato.com/api/v2.1/search?count=15&lat='+lat+'&lon='+lng+'&radius=3000';
 
             $.ajax({
                 url: queryURL_Restaurant,
@@ -204,10 +205,12 @@ $(document).ready(function() {
 
                 // $('#restaurantCard').empty();
                 // $('#restaurantCard').append('<h5 class="card-title">Restaurants</h5>');
+                $('#restaurantResultsArea').empty();
                 for (var i = 0; i < numberOfRestaurants; i++){
                     var restaurantURL = responseRestaurantInfo.restaurants[i].restaurant.url;
                     var restaurantName = responseRestaurantInfo.restaurants[i].restaurant.name;
                     // $('#restaurantCard').append('<div><a href="' + restaurantURL + '"> '+ (i+1) + '. ' + restaurantName + '</a></div>');
+                    
                     $('#restaurantResultsArea').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/hamburger.png" alt="result icon"><a class="linkMod" href="' + restaurantURL + '"' + ' target="_blank">' + restaurantName + '</a></div></div>');
    
                     
