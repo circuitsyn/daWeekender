@@ -187,8 +187,7 @@ $(document).ready(function() {
 
 
             // Start of Restaurant API ====================
-
-            var queryURL_Restaurant = 'https://developers.zomato.com/api/v2.1/search?count=15&lat='+lat+'&lon='+lng+'&radius='+maxDistance;
+            var queryURL_Restaurant = 'https://developers.zomato.com/api/v2.1/search?count=15&lat='+lat+'&lon='+lng+'&radius=3000';
 
             $.ajax({
                 url: queryURL_Restaurant,
