@@ -185,7 +185,6 @@ $(document).ready(function() {
 
 
             // Start of Restaurant API ====================
-
             var queryURL_Restaurant = 'https://developers.zomato.com/api/v2.1/search?count=15&lat='+lat+'&lon='+lng+'&radius='+maxDistance;
 
             $.ajax({
@@ -202,12 +201,12 @@ $(document).ready(function() {
                 var numberOfRestaurants = responseRestaurantInfo.restaurants.length;
                 //console.log ('number of restaurant available within max distance: '+numberOfRestaurants);
 
-                // $('#restaurantCard').empty();
-                // $('#restaurantCard').append('<h5 class="card-title">Restaurants</h5>');
+                //$('#restaurantCard').empty();
+                //$('#restaurantCard').append('<h5 class="card-title">Restaurants</h5>');
                 for (var i = 0; i < numberOfRestaurants; i++){
                     var restaurantURL = responseRestaurantInfo.restaurants[i].restaurant.url;
                     var restaurantName = responseRestaurantInfo.restaurants[i].restaurant.name;
-                    // $('#restaurantCard').append('<div><a href="' + restaurantURL + '"> '+ (i+1) + '. ' + restaurantName + '</a></div>');
+                    //$('#restaurantCard').append('<div><a href="' + restaurantURL + '"> '+ (i+1) + '. ' + restaurantName + '</a></div>');
                     $('#restaurantResultsArea').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/hamburger.png" alt="result icon"><a class="linkMod" href="' + restaurantURL + '"' + ' target="_blank">' + restaurantName + '</a></div></div>');
    
                     
