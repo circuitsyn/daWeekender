@@ -118,17 +118,17 @@ submitForm.on("click", function (event) {
         //grab the weekend forecast info for each day  -----> display date as well
         var weekendForecast = {
             friday: {
-                precipType: "",
+                icon: "",
                 temperatureHigh: 0,
                 temperatureLow: 0
             },
             saturday: {
-                precipType: "",
+                icon: "",
                 temperatureHigh: 0,
                 temperatureLow: 0
             },
             sunday: {
-                precipType: "",
+                icon: "",
                 temperatureHigh: 0,
                 temperatureLow: 0
             }
@@ -144,10 +144,10 @@ submitForm.on("click", function (event) {
                 console.log(dailyResponse);
 
                 //push daily response data into the weekend forecast object
-                    weekendForecast.friday.precipType = data.daily.data[0].precipType;
+                    weekendForecast.friday.icon = data.daily.data[0].icon;
                     weekendForecast.friday.temperatureHigh = data.daily.data[0].temperatureHigh;
                     weekendForecast.friday.temperatureLow = data.daily.data[0].temperatureLow;
-                    console.log(weekendForecast.friday.precipType);
+                    console.log(weekendForecast.friday.icon);
                     console.log(weekendForecast.friday.temperatureHigh);
                     console.log(weekendForecast.friday.temperatureLow);
 
@@ -160,10 +160,10 @@ submitForm.on("click", function (event) {
                         console.log(dailyResponse);
         
                         //push daily response data into the weekend forecast object
-                            weekendForecast.saturday.precipType = data.daily.data[0].precipType;
+                            weekendForecast.saturday.icon = data.daily.data[0].icon;
                             weekendForecast.saturday.temperatureHigh = data.daily.data[0].temperatureHigh;
                             weekendForecast.saturday.temperatureLow = data.daily.data[0].temperatureLow;
-                            console.log(weekendForecast.saturday.precipType);
+                            console.log(weekendForecast.saturday.icon);
                             console.log(weekendForecast.saturday.temperatureHigh);
                             console.log(weekendForecast.saturday.temperatureLow);
         
@@ -176,19 +176,47 @@ submitForm.on("click", function (event) {
                                 console.log(dailyResponse);
                 
                                 //push daily response data into the weekend forecast object
-                                    weekendForecast.sunday.precipType = data.daily.data[0].precipType;
+                                    weekendForecast.sunday.icon = data.daily.data[0].icon;
                                     weekendForecast.sunday.temperatureHigh = data.daily.data[0].temperatureHigh;
                                     weekendForecast.sunday.temperatureLow = data.daily.data[0].temperatureLow;
-                                    console.log(weekendForecast.sunday.precipType);
+                                    console.log(weekendForecast.sunday.icon);
                                     console.log(weekendForecast.sunday.temperatureHigh);
                                     console.log(weekendForecast.sunday.temperatureLow);
                 
                                     console.log(weekendForecast);
+
+                                    //variables for pushing forecast data to HTML
+                                    var friHighTemp = weekendForecast.friday.temperatureHigh;
+                                    var friLowTemp = weekendForecast.friday.temperatureLow;
+                                    var friIcon = weekendForecast.friday.icon;
+                                    var satHighTemp = weekendForecast.saturday.temperatureHigh;
+                                    var satLowTemp = weekendForecast.saturday.temperatureLow;
+                                    var satIcon= weekendForecast.saturday.icon;
+                                    var sunHighTemp = weekendForecast.sunday.temperatureHigh;
+                                    var sunLowTemp = weekendForecast.sunday.temperatureLow;
+                                    var sunIcon = weekendForecast.sunday.icon;
                                 
-                                    weekendForecast.friday.temperatureHigh = $("#friHighTemp");
-                                      
-                                
-                            
+                                    //append weather data to page using jquery
+                                    $(".forecast").append(
+                                        '<p class="friHighTemp">' + friHighTemp + "&#8457;" + '</p>' +
+                                        '<p class="friLowTemp">' + friLowTemp + "&#8457;" + '</p>' +
+                                        '<p class="friPrecip">' + friIcon + '</p>' +
+                                        '<p class="satHighTemp">' + satHighTemp + "&#8457;" + '</p>' +
+                                        '<p class="satLowTemp">' + satLowTemp + "&#8457;" + '</p>' +
+                                        '<p class="satPrecip">' + satIcon + '</p>' +
+                                        '<p class="sunHighTemp">' + sunHighTemp + "&#8457;" + '</p>' +
+                                        '<p class="sunLowTemp">' + sunLowTemp + "&#8457;" + '</p>' +
+                                        '<p class="sunPrecip">' + sunIcon + '</p>'
+                                    );
+                                    
+                                    //add skycons to weather data
+                                    var skycons = new Skycons({"color": "blue"});
+                                    skycons.add(document.getElementById("friSkyCon"), weekendForecast.friday.icon);
+                                    skycons.add(document.getElementById("satSkyCon"), weekendForecast.saturday.icon);
+                                    skycons.add(document.getElementById("sunSkyCon"), weekendForecast.sunday.icon);
+
+                                    skycons.play();
+  
                                 // end of Weather API -- darksky.net
                                 //=======================================================================
                             });
