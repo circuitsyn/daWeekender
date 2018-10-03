@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/results.css">
     <link rel="stylesheet"  href="assets/css/ourStory.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/weather.css" />
 
     <!-- google maps  -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoDweaPm-2OM397JbMV3n1L-WqHM6ABOM"
@@ -63,7 +64,48 @@
 
             </div>
             <div class="col-md-5 container">
-                <img id="storyIMG" src="assets/images/travel.png" alt="travel globe">
+                <!-- <img id="storyIMG" src="assets/images/travel.png" alt="travel globe"> -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-md-offset-12">
+                            <div class="weather">
+                                <div class="current">
+                                    <div class="info">
+                                        <span class="wi-day-sunny"></span>
+                                    </div>
+                                </div>
+                                <div class="forecast">
+                                    <div class="friWeather">
+                                        <h3>Fri</h3>
+                                            <p id="friDate"></p>
+                                            <p id="friHighTemp"></p>
+                                            <p id="friLowTemp"></p>
+                                            <p id="friPrecip"></p>
+                                            <canvas id="friSkyCon" width="128" height="128"></canvas>
+                                    </div>
+                                    <div class="satWeather">
+                                        <h3>Sat</h3>
+                                            <p id="satDate"></p>
+                                            <p id="satHighTemp"></p>
+                                            <p id="satLowTemp"></p>
+                                            <p id="satPrecip"></p>
+                                            <canvas id="satSkyCon" width="128" height="128"></canvas>
+                                    </div>
+                                    <div class="sunWeather">
+                                        <h3>Sun</h3>
+                                            <p id="sunDate"></p>
+                                            <p id="sunHighTemp"></p>
+                                            <p id="sunLowTemp"></p>
+                                            <p id="sunPrecip"></p>
+                                            <canvas id="sunSkyCon" width="128" height="128"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
 
         </div>
@@ -212,6 +254,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- moment.js link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js" integrity="sha256-ABVkpwb9K9PxubvRrHMkk6wmWcIHUE9eBxNZLXYQ84k=" crossorigin="anonymous"></script> 
+    <!-- skycons link -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.min.js'></script>
     <script src="assets/javascript/app.js"></script>
 
     </body>
