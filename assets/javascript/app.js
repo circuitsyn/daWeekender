@@ -335,16 +335,54 @@ $(document).ready(function () {
                     image = $('<img>');
                     $(image).attr('src', hikingObject.imgMedium);
                     $(image).attr('alt','Hiking Location Featured Image');
-                    $('.modalTitle').empty();
+                    $('.modalImage').empty();
                     $('.modalImage').append(image);
                     
                     //Append Title
-                    h1 = $('<h1>');
-                    $(h1).text(hikingObject.name);
+                    a = $('<a>');
+                    $(a).attr('href', hikingObject.url);
+                    $(a).text(hikingObject.name);
+                    $(a).attr('target', '_blank');
                     $('.modalTitle').empty();
-                    $('.modalTitle').append(h1);
-                    
-                    
+                    $('.modalTitle').append(a);
+
+                    //Append Location
+                    location = $('<h4>');
+                    $(location).text(hikingObject.location);
+                    $('.modalLocation').empty();
+                    $('.modalLocation').append(location);
+
+                    //Append Stats
+                    //Rating
+                    rating = $('<h3>');
+                    $(rating).text('Rating (1-5): ' + hikingObject.rating);
+                    $('#modalRating').empty();
+                    $('#modalRating').append(rating);
+
+                    //Difficulty
+                    difficulty = $('<h3>');
+                    $(difficulty).text('Difficulty: ' + hikingObject.difficulty);
+                    $('#modalDifficulty').empty();
+                    $('#modalDifficulty').append(difficulty);
+
+                    //Length
+                    length = $('<h3>');
+                    $(length).text('Distance (miles): ' + hikingObject.length);
+                    $('#modalLength').empty();
+                    $('#modalLength').append(length);
+
+
+                    //Append Summary
+                    //Summary title
+                    summaryHeader = $('<h3>');
+                    $(summaryHeader).text('Summary: ');
+                    $('.modalSummary').empty();
+                    $('.modalSummary').append(summaryHeader);
+
+                    //Summary text
+                    summaryText = $('<p>');
+                    $(summaryText).text(hikingObject.summary);
+                    $('.modalSummary').append(summaryText);
 
                     });
             });
