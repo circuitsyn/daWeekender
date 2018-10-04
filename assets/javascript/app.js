@@ -289,15 +289,43 @@ $(document).ready(function () {
                 console.log("Hiking API Data:");
                 console.log(responseHikingInfo);
                 var numberOfTrails = responseHikingInfo.trails.length;
+                
                 $('#hikingResultsArea').empty();
                 //console.log ('number of trails available within max distance: '+numberOfTrails)
                 for (var i = 0; i < numberOfTrails; i++) {
                     var locationURL = responseHikingInfo.trails[i].url;
                     var locationName = responseHikingInfo.trails[i].name;
                     // $('#hikingCard').append('<div><a href="' + locationURL + '"> '+ (i+1) + '. ' + locationName + '</a></div>');
+                    
+                    // $('#hikingResultsArea').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/tree.png" alt="result icon"><a class="linkMod" href="' + locationURL + '"' + ' target="_blank">' + locationName + '</a></div></div>');
+                    
+                    //Building divs and appending
+                    var hikingDiv = $('<div>');
+                    $(hikingDiv).attr('id','resultHikingContainer');
+                    $(hikingDiv).addClass("row container resultWrapper");
+                    $('#hikingResultsArea').append(hikingDiv);
 
-                    $('#hikingResultsArea').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/tree.png" alt="result icon"><a class="linkMod" href="' + locationURL + '"' + ' target="_blank">' + locationName + '</a></div></div>');
-
+                    //Building Image and appending
+                    var hikingIcon = $('<img>');
+                    $(hikingIcon).addClass("resultIcon float p-1 img-responsive");
+                    $(hikingIcon).attr('src', 'assets/images/tree.png');
+                    $(hikingIcon).attr('alt', 'result icon');
+                    $('#resultHikingContainer').append(hikingIcon);
+                    
+                    //Building Button and appending
+                    var hikingButton = $('<button>');
+                    console.log(hikingButton);
+                    $(hikingButton).addClass("btn btn-success hikingButtonModalLink text-truncate");
+                    console.log(hikingButton);
+                    $(hikingButton).attr('type','button');
+                    console.log(hikingButton);
+                    $(hikingButton).attr('data-info', responseHikingInfo);
+                    console.log(hikingButton);
+                    $(hikingButton).attr('data-target','.hikingModal');
+                    console.log(hikingButton);
+                    $(hikingButton).text(locationName);
+                    console.log(hikingButton);
+                    $('#resultHikingContainer').append(hikingButton);
                 }
 
             });
