@@ -295,6 +295,7 @@ $(document).ready(function () {
                 for (var i = 0; i < numberOfTrails; i++) {
                     var locationURL = responseHikingInfo.trails[i].url;
                     var locationName = responseHikingInfo.trails[i].name;
+                    locationName = locationName.substring(0,28) + '..';
                     // $('#hikingCard').append('<div><a href="' + locationURL + '"> '+ (i+1) + '. ' + locationName + '</a></div>');
                     
                     // $('#hikingResultsArea').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/tree.png" alt="result icon"><a class="linkMod" href="' + locationURL + '"' + ' target="_blank">' + locationName + '</a></div></div>');
@@ -314,20 +315,38 @@ $(document).ready(function () {
                     
                     //Building Button and appending
                     var hikingButton = $('<button>');
-                    console.log(hikingButton);
-                    $(hikingButton).addClass("btn btn-success hikingButtonModalLink text-truncate");
-                    console.log(hikingButton);
+                    $(hikingButton).addClass("btn btn-success narrower hikingButtonModalLink");
                     $(hikingButton).attr('type','button');
-                    console.log(hikingButton);
-                    $(hikingButton).attr('data-info', responseHikingInfo);
-                    console.log(hikingButton);
+                    $(hikingButton).attr('data-toggle','modal');
+                    $(hikingButton).attr('data-info', JSON.stringify(responseHikingInfo.trails[i]));
+                    $(hikingButton).attr('iteration', i);
                     $(hikingButton).attr('data-target','.hikingModal');
-                    console.log(hikingButton);
                     $(hikingButton).text(locationName);
-                    console.log(hikingButton);
                     $('#resultHikingContainer').append(hikingButton);
                 }
+                //Modal on click function
+                $('.hikingButtonModalLink').on("click", function (event) {
+                    var hikingObject = JSON.parse($(this).attr('data-info'));
+                    var x = $(this).attr('iteration');
+                    console.log('value of x: ' + x);
+                    // console.log(JSON.parse(hikingObject));
+                    
+                    //Append Image
+                    image = $('<img>');
+                    $(image).attr('src', hikingObject.imgMedium);
+                    $(image).attr('alt','Hiking Location Featured Image');
+                    $('.modalTitle').empty();
+                    $('.modalImage').append(image);
+                    
+                    //Append Title
+                    h1 = $('<h1>');
+                    $(h1).text(hikingObject.name);
+                    $('.modalTitle').empty();
+                    $('.modalTitle').append(h1);
+                    
+                    
 
+                    });
             });
 
             // End of Hiking API ====================
@@ -368,6 +387,9 @@ $(document).ready(function () {
         });//end of google submit function
 
     });
+
+    
+
 })
 
 

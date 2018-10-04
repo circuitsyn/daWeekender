@@ -7,7 +7,7 @@
     display: block
 }
 
-#resultEntry {
+#resultEntry, #resultHikingContainer {
     padding: 0px;
     margin: auto;
 }

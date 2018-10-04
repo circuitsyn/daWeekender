@@ -77,4 +77,12 @@ body, html {
 .btn-success {
     font-weight: bold;
     color: white !important;
+    padding: 0px 6px 0px 6px;
 }
+
+.btn-success.narrower {
+    font-weight: normal;
+    font-size: 16px;
+}
+
+
