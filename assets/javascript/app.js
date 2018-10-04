@@ -22,12 +22,9 @@ $(document).ready(function () {
         searchTerm = snapshot.val().searchTermServ;
 
         //Append data to results card
-        $('#recentSearchesArea').append('<button id="search-button" type="button" class="btn btn-success resultButton">' + searchTerm + '</button><br>')
+        $('#recentSearchesArea').append('<button id="search-button" type="button" class="btn btn-success resultButton">' + searchTerm + '</button><br>');
 
-    });
-    //End of Firebase Main
-    //====================================================================
-
+    //=====================================================================
     //Background Image JS
 
     var images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg'];
@@ -40,30 +37,30 @@ $(document).ready(function () {
 
     // start of google map and geocode api calls and functions
     // grab our search button ID
-    var submitForm = $('#search-button');
+    // var submitForm = $('#search-button');
     // create on click function to run when we click submit
-    submitForm.on("click", function (event) {
+    function results() {
         // Prevent page reload on submit
-        event.preventDefault();
+        // event.preventDefault();
 
         // -------firebase component insert------- 
-        // store value of search term in firebase variable
-        searchTerm = $("#search-input").val()
-        // push value to firebase
-        database.ref('/searches').push({
-            searchTermServ: searchTerm,
-        });
-        // --------------------------------------
+        // // store value of search term in firebase variable
+        // searchTerm = $("#search-input").val()
+        // // push value to firebase
+        // database.ref('/searches').push({
+        //     searchTermServ: searchTerm,
+        // });
+        // // --------------------------------------
 
 
         // location varible
-        var location = $("#search-input").val();
+        // var location = $("#search-input").val();
 
-        var queryUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + location + "&key=AIzaSyBoDweaPm-2OM397JbMV3n1L-WqHM6ABOM"
+        var queryUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + searchTerm + "&key=AIzaSyBoDweaPm-2OM397JbMV3n1L-WqHM6ABOM"
         $.ajax({
             url: queryUrl,
             method: "GET"
-        }).then(function (response) {
+        }).done(function (response) {
             // log full response
             console.log("Location API Data:");
             console.log(response);
@@ -283,7 +280,7 @@ $(document).ready(function () {
             $.ajax({
                 url: queryURL_Hiking,
                 method: "GET"
-            }).then(function (responseHikingInfo) {
+            }).done(function (responseHikingInfo) {
 
                 //console.log(queryURL_Hiking);
                 console.log("Hiking API Data:");
@@ -315,7 +312,7 @@ $(document).ready(function () {
                     "user-key": "484b921e03f7cc2c9335696b2d2ff5e3",
                     "accept": "application/json"
                 }
-            }).then(function (responseRestaurantInfo) {
+            }).done(function (responseRestaurantInfo) {
                 //console.log(queryURL_Restaurant);
                 console.log("Retaurant API Data:");
                 console.log(responseRestaurantInfo);
@@ -334,13 +331,44 @@ $(document).ready(function () {
 
 
                 }
+
             });
             // End of Restaurant API ====================
 
         });//end of google submit function
 
+    };
+    // run results function
+    results();
+
     });
-})
+    //End of Firebase Main
+    //====================================================================
+    var landingForm = $('#add-topic');
+
+    landingForm.on("click", function(event) {
+
+
+    //        // -------firebase component insert------- 
+    //    // store value of search term in firebase variable
+    //    searchTerm = $("#topic-input").val()
+    //    // push value to firebase
+    //    database.ref().set({
+    //         searchTermServ: searchTerm,
+
+            
+    //    });
+    // -------firebase component insert------- 
+    // store value of search term in firebase variable
+    searchTerm = $("#topic-input").val()
+    // push value to firebase
+    database.ref('/searches').push({
+            searchTermServ: searchTerm,
+    });
+    // --------------------------------------
+});
+
+});
 
 
 
