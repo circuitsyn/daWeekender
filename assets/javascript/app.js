@@ -160,7 +160,7 @@ $(document).ready(function () {
                     }
 
                     //Modal on click function
-                    //This is the listener applied to the hiking modal button - sits outside and independent of the for loop for button creation above, but still inside the respective api call
+                    //This is the listener applied to the events modal button - sits outside and independent of the for loop for button creation above, but still inside the respective api call
                     $('.eventsButtonModalLink').on("click", function (event) {
                         var eventsObject = JSON.parse($(this).attr('data-info'));
                                                         
@@ -207,13 +207,13 @@ $(document).ready(function () {
 
                         //Append Summary
                         //Summary title
-                        summaryHeader = $('<h3>');
+                        var summaryHeader = $('<h3>');
                         $(summaryHeader).text('Summary: ');
                         $('.modalSummary').empty();
                         $('.modalSummary').append(summaryHeader);
 
                         //Summary text
-                        summaryText = $('<div>');
+                        var summaryText = $('<div>');
                         $(summaryText).text(eventsObject.description);
                         $('.modalSummary').append(summaryText);
 
@@ -451,13 +451,13 @@ $(document).ready(function () {
 
                     //Append Summary
                     //Summary title
-                    summaryHeader = $('<h3>');
+                    var summaryHeader = $('<h3>');
                     $(summaryHeader).text('Summary: ');
                     $('.modalSummary').empty();
                     $('.modalSummary').append(summaryHeader);
 
                     //Summary text
-                    summaryText = $('<p>');
+                    var summaryText = $('<p>');
                     $(summaryText).text(hikingObject.summary);
                     $('.modalSummary').append(summaryText);
 
@@ -515,6 +515,69 @@ $(document).ready(function () {
                     $('#restaurantResultsArea').append(restaurantDiv);
 
                 }
+
+                //Modal on click function
+                //This is the listener applied to the hiking modal button - sits outside and independent of the for loop for button creation above, but still inside the respective api call
+                $('.restaurantButtonModalLink').on("click", function (event) {
+                    var restaurantObject = JSON.parse($(this).attr('data-info'));
+                                                     
+                    //Append Image
+                    var image = $('<img>');
+                    $(image).attr('src', restaurantObject.restaurant.featured_image);
+                    $(image).attr('alt','Restaurant Featured Image');
+                    $('.modalImage').empty();
+                    $('.modalImage').append(image);
+                    
+                    //Append Title
+                    var a = $('<a>');
+                    $(a).attr('href', restaurantObject.restaurant.url);
+                    $(a).text(restaurantObject.restaurant.name);
+                    $(a).attr('target', '_blank');
+                    $('.modalTitle').empty();
+                    $('.modalTitle').append(a);
+
+                    //Append Location
+                    var location = $('<h4>');
+                    $(location).text(restaurantObject.restaurant.location.locality_verbose);
+                    $('.modalLocation').empty();
+                    $('.modalLocation').append(location);
+
+                    //Append Stats
+                    //Rating
+                    var rating = $('<h3>');
+                    $(rating).text('Rating (1-5): ' + restaurantObject.restaurant.user_rating.aggregate_rating);
+                    $('#modalRating').empty();
+                    $('#modalRating').append(rating);
+
+                    //Cost
+                    var difficulty = $('<h3>');
+                    $(difficulty).text('Avg. Cost for Two($): ' + restaurantObject.restaurant.average_cost_for_two);
+                    $('#modalDifficulty').empty();
+                    $('#modalDifficulty').append(difficulty);
+
+                    //Cuisine
+                    var length = $('<h3>');
+                    $(length).text('Cuisine(s): ' + restaurantObject.restaurant.cuisines);
+                    $('#modalLength').empty();
+                    $('#modalLength').append(length);
+
+
+                    //Append Menu Items
+                    //Menu Text
+                    var summaryHeader = $('<h3>');
+                    $(summaryHeader).text('Menu: ');
+                    $('.modalSummary').empty();
+                    $('.modalSummary').append(summaryHeader);
+
+                    //Append Menu Link
+                    var a = $('<a>');
+                    $(a).attr('href', restaurantObject.restaurant.menu_url);
+                    $(a).text('Click here to view the menu!');
+                    $(a).attr('target', '_blank');
+                    $('.modalSummary').empty();
+                    $('.modalSummary').append(a);
+
+                    });
             });
             // End of Restaurant API ====================
 
