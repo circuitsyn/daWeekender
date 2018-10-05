@@ -275,7 +275,7 @@ $(document).ready(function () {
                         );
 
                         //add skycons to weather data
-                        var skycons = new Skycons({ "color": "white" });
+                        var skycons = new Skycons({ "color": "#4d94ff" })
                         skycons.add(document.getElementById("friSkyCon"), weekendForecast.friday.icon);
                         skycons.add(document.getElementById("satSkyCon"), weekendForecast.saturday.icon);
                         skycons.add(document.getElementById("sunSkyCon"), weekendForecast.sunday.icon);

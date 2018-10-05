@@ -1,37 +1,51 @@
 #weatherCard {
     display: flex;
     flex-flow: column wrap;
-    box-shadow: 0px 1px 10px 0px #cfcfcf;
+    box-shadow: 0px 1px 10px 0px #4d94ff;
     overflow: hidden;
     border-radius: 15px;
-    background-color: #4d94ff;
-    color: #ffffff;
-    margin: 5px;
+    border-color: #4d94ff;
+    color: #4d94ff;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+h5 {
+    font-weight: bold;
 }
 
 .friHighTemp {
-    color: #ff0066;
+    color: #cc0000;
+    font-weight: bold;
 }
 
 .satHighTemp {
-    color: #ff0066;
+    color: #cc0000;
+    font-weight: bold;
 }
 
 .sunHighTemp {
-    color: #ff0066;
+    color: #cc0000;
+    font-weight: bold;
 }
 
 .friLowTemp {
     color: #000066;
+    font-weight: bold;
 }
 
 .satLowTemp {
     color: #000066;
+    font-weight: bold;
 }
 
 .sunLowTemp {
     color: #000066;
+    font-weight: bold;
 }
+
 
 
 
