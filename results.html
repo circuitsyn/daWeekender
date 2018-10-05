@@ -63,54 +63,34 @@
 
             </div>
             <div class="col-md-5 container">
-                <!-- <img id="storyIMG" src="assets/images/travel.png" alt="travel globe"> -->
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12 col-md-offset-12">
-                            <div class="weather">
-                                <div class="current">
-                                    <div class="info">
-                                        <span class="wi-day-sunny"></span>
-                                    </div>
-                                </div>
-                                <div class="forecast">
-                                    <div class="friWeather">
-                                        <h3>Fri</h3>
-                                            <p id="friDate"></p>
-                                            <p id="friHighTemp"></p>
-                                            <p id="friLowTemp"></p>
-                                            <p id="friPrecip"></p>
-                                            <canvas id="friSkyCon" width="128" height="128"></canvas>
-                                    </div>
-                                    <div class="satWeather">
-                                        <h3>Sat</h3>
-                                            <p id="satDate"></p>
-                                            <p id="satHighTemp"></p>
-                                            <p id="satLowTemp"></p>
-                                            <p id="satPrecip"></p>
-                                            <canvas id="satSkyCon" width="128" height="128"></canvas>
-                                    </div>
-                                    <div class="sunWeather">
-                                        <h3>Sun</h3>
-                                            <p id="sunDate"></p>
-                                            <p id="sunHighTemp"></p>
-                                            <p id="sunLowTemp"></p>
-                                            <p id="sunPrecip"></p>
-                                            <canvas id="sunSkyCon" width="128" height="128"></canvas>
-                                    </div>
-                                </div>
+                        <div class="card text-center" style="width: 9rem;">
+                            <div class="card-body" id="weatherCard">
+                                <h5 class="card-title">Friday</h5>
+                                <p class="card-text" id="friWeather"></p>
+                                <canvas id="friSkyCon" width="90" height="90"></canvas>
+                            </div>
+                        </div>
+                        <div class="card text-center" style="width: 9rem;">
+                            <div class="card-body" id="weatherCard">
+                                <h5 class="card-title">Saturday</h5>
+                                <p class="card-text" id="satWeather"></p>
+                                <canvas id="satSkyCon" width="90" height="90"></canvas>
+                            </div>
+                        </div>
+                        <div class="card text-center" style="width: 9rem;">
+                            <div class="card-body" id="weatherCard">
+                                <h5 class="card-title">Sunday</h5>
+                                <p class="card-text" id="sunWeather"></p>
+                                <canvas id="sunSkyCon" width="90" height="90"></canvas>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
             </div>
-
         </div>
-
-
-
+    </div>
 
     <!-- Card Section Row 1 -->
     <div id="cardSection" class="row container">
