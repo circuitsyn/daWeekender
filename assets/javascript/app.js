@@ -127,7 +127,6 @@ $(document).ready(function () {
                     console.log("Events API Data:");
                     console.log(data);
 
-                    
                     $('#eventResultArea').empty();
                     for (i = 0; i < data.results.length; i++) {
                         var link = data.results[i].event_url;
@@ -479,22 +478,41 @@ $(document).ready(function () {
                     "accept": "application/json"
                 }
             }).then(function (responseRestaurantInfo) {
-                //console.log(queryURL_Restaurant);
+                
                 console.log("Retaurant API Data:");
                 console.log(responseRestaurantInfo);
                 var numberOfRestaurants = responseRestaurantInfo.restaurants.length;
-                //console.log ('number of restaurant available within max distance: '+numberOfRestaurants);
-
-                // $('#restaurantCard').empty();
-                // $('#restaurantCard').append('<h5 class="card-title">Restaurants</h5>');
+                
                 $('#restaurantResultsArea').empty();
                 for (var i = 0; i < numberOfRestaurants; i++) {
                     var restaurantURL = responseRestaurantInfo.restaurants[i].restaurant.url;
                     var restaurantName = responseRestaurantInfo.restaurants[i].restaurant.name;
-                    // $('#restaurantCard').append('<div><a href="' + restaurantURL + '"> '+ (i+1) + '. ' + restaurantName + '</a></div>');
+                    restaurantName = restaurantName.substring(0,28) + '..';
 
-                    $('#restaurantResultsArea').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/hamburger.png" alt="result icon"><a class="linkMod" href="' + restaurantURL + '"' + ' target="_blank">' + restaurantName + '</a></div></div>');
-
+                    //Building divs and appending
+                    
+                    var restaurantDiv = $('<div>');
+                    $(restaurantDiv).attr('class','resultRestaurantContainer');
+                    $(restaurantDiv).addClass("row container resultWrapper");
+                    
+                    //Building Image and appending
+                    var restaurantIcon = $('<img>');
+                    $(restaurantIcon).addClass("resultIcon float-left p-1 img-responsive");
+                    $(restaurantIcon).attr('src', 'assets/images/hamburger.png');
+                    $(restaurantIcon).attr('alt', 'result icon');
+                    $(restaurantDiv).append(restaurantIcon);
+                    
+                    //Building Button and appending
+                    var restaurantButton = $('<button>');
+                    $(restaurantButton).addClass("btn btn-success narrower restaurantButtonModalLink");
+                    $(restaurantButton).attr('type','button');
+                    $(restaurantButton).attr('data-toggle','modal');
+                    $(restaurantButton).attr('data-info', JSON.stringify(responseRestaurantInfo.restaurants[i]));
+                    $(restaurantButton).attr('data-target','.hikingModal');
+                    $(restaurantButton).text(restaurantName);
+                    $(restaurantDiv).append(restaurantButton);
+                    //Append the div with contents to results area
+                    $('#restaurantResultsArea').append(restaurantDiv);
 
                 }
             });
