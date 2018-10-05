@@ -127,18 +127,98 @@ $(document).ready(function () {
                     console.log("Events API Data:");
                     console.log(data);
 
-                    // $('#resultArea').empty();
-                    // $('#resultArea').append('<h5 class="card-title">Events</h5>');
+                    
                     $('#eventResultArea').empty();
                     for (i = 0; i < data.results.length; i++) {
                         var link = data.results[i].event_url;
                         var text = data.results[i].name;
+                        text = text.substring(0,27) + '..';
 
-                        //apppend event api events to card
-
-                        $('#eventResultArea').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/eventIcon.png" alt="result icon"><a class="linkMod" href="' + link + '"' + ' target="_blank">' + text + '</a></div></div>');
+                    //Building divs and appending
+                    
+                    var eventsDiv = $('<div>');
+                    $(eventsDiv).attr('class','resultEventsContainer');
+                    $(eventsDiv).addClass("row container resultWrapper");
+                    
+                    //Building Image and appending
+                    var eventsIcon = $('<img>');
+                    $(eventsIcon).addClass("resultIcon float-left p-1 img-responsive");
+                    $(eventsIcon).attr('src', 'assets/images/eventIcon.png');
+                    $(eventsIcon).attr('alt', 'result icon');
+                    $(eventsDiv).append(eventsIcon);
+                    
+                    //Building Button and appending
+                    var eventsButton = $('<button>');
+                    $(eventsButton).addClass("btn btn-success narrower eventsButtonModalLink");
+                    $(eventsButton).attr('type','button');
+                    $(eventsButton).attr('data-toggle','modal');
+                    $(eventsButton).attr('data-info', JSON.stringify(data.results[i]));
+                    $(eventsButton).attr('data-target','.hikingModal');
+                    $(eventsButton).text(text);
+                    $(eventsDiv).append(eventsButton);
+                    //Append the div with contents to results area
+                    $('#eventResultArea').append(eventsDiv);
                     }
 
+                    //Modal on click function
+                    //This is the listener applied to the hiking modal button - sits outside and independent of the for loop for button creation above, but still inside the respective api call
+                    $('.eventsButtonModalLink').on("click", function (event) {
+                        var eventsObject = JSON.parse($(this).attr('data-info'));
+                                                        
+                        //Append Image
+                        var image = $('<img>');
+                        $(image).attr('src', eventsObject.photo_url);
+                        $(image).attr('alt','Meetup Featured Image');
+                        $('.modalImage').empty();
+                        $('.modalImage').append(image);
+                        
+                        //Append Title
+                        var a = $('<a>');
+                        $(a).attr('href', eventsObject.event_url);
+                        $(a).text(eventsObject.name);
+                        $(a).attr('target', '_blank');
+                        $('.modalTitle').empty();
+                        $('.modalTitle').append(a);
+
+                        //Append Location
+                        var location = $('<h4>');
+                        $(location).text(eventsObject.venue.name + ': ' + eventsObject.venue.address_1 + ' ' + eventsObject.venue.city);
+                        $('.modalLocation').empty();
+                        $('.modalLocation').append(location);
+
+                        //Append Stats
+                        //RSVP
+                        var rating = $('<h3>');
+                        $(rating).text('RSVP Count: ' + eventsObject.yes_rsvp_count);
+                        $('#modalRating').empty();
+                        $('#modalRating').append(rating);
+
+                        //Waitlist
+                        var difficulty = $('<h3>');
+                        $(difficulty).text('Waitlist Count: ' + eventsObject.waitlist_count);
+                        $('#modalDifficulty').empty();
+                        $('#modalDifficulty').append(difficulty);
+
+                        //Visibility
+                        var length = $('<h3>');
+                        $(length).text('Visibility: ' + eventsObject.visibility);
+                        $('#modalLength').empty();
+                        $('#modalLength').append(length);
+
+
+                        //Append Summary
+                        //Summary title
+                        summaryHeader = $('<h3>');
+                        $(summaryHeader).text('Summary: ');
+                        $('.modalSummary').empty();
+                        $('.modalSummary').append(summaryHeader);
+
+                        //Summary text
+                        summaryText = $('<div>');
+                        $(summaryText).text(eventsObject.description);
+                        $('.modalSummary').append(summaryText);
+
+                        });
                 }
             });
             // End of Events API - Meetup.com
@@ -296,10 +376,7 @@ $(document).ready(function () {
                     var locationURL = responseHikingInfo.trails[i].url;
                     var locationName = responseHikingInfo.trails[i].name;
                     locationName = locationName.substring(0,28) + '..';
-                    // $('#hikingCard').append('<div><a href="' + locationURL + '"> '+ (i+1) + '. ' + locationName + '</a></div>');
-                    
-                    // $('#hikingResultsArea').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/tree.png" alt="result icon"><a class="linkMod" href="' + locationURL + '"' + ' target="_blank">' + locationName + '</a></div></div>');
-                    
+                                        
                     //Building divs and appending
                     
                     var hikingDiv = $('<div>');
@@ -308,7 +385,6 @@ $(document).ready(function () {
                     
                     //Building Image and appending
                     var hikingIcon = $('<img>');
-                    $(hikingIcon).attr('id',('resultIcon'+i));
                     $(hikingIcon).addClass("resultIcon float-left p-1 img-responsive");
                     $(hikingIcon).attr('src', 'assets/images/tree.png');
                     $(hikingIcon).attr('alt', 'result icon');
