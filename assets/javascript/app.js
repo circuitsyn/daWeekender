@@ -301,17 +301,18 @@ $(document).ready(function () {
                     // $('#hikingResultsArea').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/tree.png" alt="result icon"><a class="linkMod" href="' + locationURL + '"' + ' target="_blank">' + locationName + '</a></div></div>');
                     
                     //Building divs and appending
+                    
                     var hikingDiv = $('<div>');
-                    $(hikingDiv).attr('id','resultHikingContainer');
+                    $(hikingDiv).attr('class','resultHikingContainer');
                     $(hikingDiv).addClass("row container resultWrapper");
-                    $('#hikingResultsArea').append(hikingDiv);
-
+                    
                     //Building Image and appending
                     var hikingIcon = $('<img>');
-                    $(hikingIcon).addClass("resultIcon float p-1 img-responsive");
+                    $(hikingIcon).attr('id',('resultIcon'+i));
+                    $(hikingIcon).addClass("resultIcon float-left p-1 img-responsive");
                     $(hikingIcon).attr('src', 'assets/images/tree.png');
                     $(hikingIcon).attr('alt', 'result icon');
-                    $('#resultHikingContainer').append(hikingIcon);
+                    $(hikingDiv).append(hikingIcon);
                     
                     //Building Button and appending
                     var hikingButton = $('<button>');
@@ -319,27 +320,28 @@ $(document).ready(function () {
                     $(hikingButton).attr('type','button');
                     $(hikingButton).attr('data-toggle','modal');
                     $(hikingButton).attr('data-info', JSON.stringify(responseHikingInfo.trails[i]));
-                    $(hikingButton).attr('iteration', i);
                     $(hikingButton).attr('data-target','.hikingModal');
                     $(hikingButton).text(locationName);
-                    $('#resultHikingContainer').append(hikingButton);
+                    $(hikingDiv).append(hikingButton);
+                    //Append the div with contents to results area
+                    $('#hikingResultsArea').append(hikingDiv);
                 }
+
+
                 //Modal on click function
+                //This is the listener applied to the hiking modal button - sits outside and independent of the for loop for button creation above, but still inside the respective api call
                 $('.hikingButtonModalLink').on("click", function (event) {
                     var hikingObject = JSON.parse($(this).attr('data-info'));
-                    var x = $(this).attr('iteration');
-                    console.log('value of x: ' + x);
-                    // console.log(JSON.parse(hikingObject));
-                    
+                                                     
                     //Append Image
-                    image = $('<img>');
+                    var image = $('<img>');
                     $(image).attr('src', hikingObject.imgMedium);
                     $(image).attr('alt','Hiking Location Featured Image');
                     $('.modalImage').empty();
                     $('.modalImage').append(image);
                     
                     //Append Title
-                    a = $('<a>');
+                    var a = $('<a>');
                     $(a).attr('href', hikingObject.url);
                     $(a).text(hikingObject.name);
                     $(a).attr('target', '_blank');
@@ -347,26 +349,26 @@ $(document).ready(function () {
                     $('.modalTitle').append(a);
 
                     //Append Location
-                    location = $('<h4>');
+                    var location = $('<h4>');
                     $(location).text(hikingObject.location);
                     $('.modalLocation').empty();
                     $('.modalLocation').append(location);
 
                     //Append Stats
                     //Rating
-                    rating = $('<h3>');
-                    $(rating).text('Rating (1-5): ' + hikingObject.rating);
+                    var rating = $('<h3>');
+                    $(rating).text('Rating (1-5): ' + hikingObject.stars);
                     $('#modalRating').empty();
                     $('#modalRating').append(rating);
 
                     //Difficulty
-                    difficulty = $('<h3>');
+                    var difficulty = $('<h3>');
                     $(difficulty).text('Difficulty: ' + hikingObject.difficulty);
                     $('#modalDifficulty').empty();
                     $('#modalDifficulty').append(difficulty);
 
                     //Length
-                    length = $('<h3>');
+                    var length = $('<h3>');
                     $(length).text('Distance (miles): ' + hikingObject.length);
                     $('#modalLength').empty();
                     $('#modalLength').append(length);
