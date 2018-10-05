@@ -234,18 +234,12 @@ $(document).ready(function () {
                         console.log(weekendForecast);
 
                         //variables for pushing forecast data to HTML
-                        var friTime = weekendForecast.friday.time
                         var friHighTemp = weekendForecast.friday.temperatureHigh;
                         var friLowTemp = weekendForecast.friday.temperatureLow;
-                        var friIcon = weekendForecast.friday.icon;
-                        var satTime = weekendForecast.saturday.time;
                         var satHighTemp = weekendForecast.saturday.temperatureHigh;
                         var satLowTemp = weekendForecast.saturday.temperatureLow;
-                        var satIcon = weekendForecast.saturday.icon;
-                        var sunTime = weekendForecast.sunday.time;
                         var sunHighTemp = weekendForecast.sunday.temperatureHigh;
                         var sunLowTemp = weekendForecast.sunday.temperatureLow;
-                        var sunIcon = weekendForecast.sunday.icon;
 
                         //convert temp data to whole numbers
                         friHighTemp = Math.round(friHighTemp);
@@ -255,7 +249,7 @@ $(document).ready(function () {
                         sunHighTemp = Math.round(sunHighTemp);
                         sunLowTemp = Math.round(sunLowTemp);
 
-                        //convert time to calendar day using moment.js
+                        //convert time to calendar date using moment.js
                         friDate = friRequestDay.format("ll");
                         console.log(friDate);
                         satDate = satRequestDay.format("ll");
@@ -263,7 +257,6 @@ $(document).ready(function () {
                         sunDate = sunRequestDay.format("ll");
                         console.log(sunDate);
   
-
                         //append weather data to page using jquery
                         $("#friWeather").html(
                             '<p class="friDate">' + friDate + '</p>' +
