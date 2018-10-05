@@ -13,6 +13,13 @@ $(document).ready(function () {
     //initializing firebase config
     firebase.initializeApp(config);
 
+    // ===========GLOBAL VARIABLES===============
+    var lat = 0;
+    var lng = 0;
+    var hikingResults;
+    var currentRestaurantCount = 0;
+    var currentTrailCount = 0;
+
     //Bring firebase down to connect for manipulation
     var database = firebase.database();
 
@@ -39,6 +46,9 @@ $(document).ready(function () {
     //End of Background Image JS
     //======================================================================
 
+
+
+
     // start of google map and geocode api calls and functions
     function results() {
 
@@ -51,8 +61,8 @@ $(document).ready(function () {
             console.log("Location API Data:");
             console.log(response);
             // pull lat and lng
-            var lat = response.results[0].geometry.location.lat
-            var lng = response.results[0].geometry.location.lng
+            lat = response.results[0].geometry.location.lat
+            lng = response.results[0].geometry.location.lng
             // log our lat and lng to the console
             console.log(lat);
             console.log(lng);
@@ -260,65 +270,12 @@ $(document).ready(function () {
             //=======================================================================
 
             // Start of Hiking API ====================
-
-            var maxDistance = 30;
-            var queryURL_Hiking = 'https://www.hikingproject.com/data/get-trails?lat=' + lat + '&lon=' + lng + '&maxDistance=' + maxDistance + '&key=200364142-c73ec0ae2d02db6031cef492b6b86f45'
-            $.ajax({
-                url: queryURL_Hiking,
-                method: "GET"
-            }).done(function (responseHikingInfo) {
-
-                //console.log(queryURL_Hiking);
-                console.log("Hiking API Data:");
-                console.log(responseHikingInfo);
-                var numberOfTrails = responseHikingInfo.trails.length;
-                $('#hikingResultsArea').empty();
-                //console.log ('number of trails available within max distance: '+numberOfTrails)
-                for (var i = 0; i < numberOfTrails; i++) {
-                    var locationURL = responseHikingInfo.trails[i].url;
-                    var locationName = responseHikingInfo.trails[i].name;
-                    // $('#hikingCard').append('<div><a href="' + locationURL + '"> '+ (i+1) + '. ' + locationName + '</a></div>');
-
-                    $('#hikingResultsArea').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/tree.png" alt="result icon"><a class="linkMod" href="' + locationURL + '"' + ' target="_blank">' + locationName + '</a></div></div>');
-
-                }
-
-            });
-
+            hikingAPICalls();
             // End of Hiking API ====================
 
 
             // Start of Restaurant API ====================
-            var queryURL_Restaurant = 'https://developers.zomato.com/api/v2.1/search?count=15&lat=' + lat + '&lon=' + lng + '&radius=3000';
-
-            $.ajax({
-                url: queryURL_Restaurant,
-                method: "GET",
-                "headers": {
-                    "user-key": "484b921e03f7cc2c9335696b2d2ff5e3",
-                    "accept": "application/json"
-                }
-            }).done(function (responseRestaurantInfo) {
-                //console.log(queryURL_Restaurant);
-                console.log("Retaurant API Data:");
-                console.log(responseRestaurantInfo);
-                var numberOfRestaurants = responseRestaurantInfo.restaurants.length;
-                //console.log ('number of restaurant available within max distance: '+numberOfRestaurants);
-
-                // $('#restaurantCard').empty();
-                // $('#restaurantCard').append('<h5 class="card-title">Restaurants</h5>');
-                $('#restaurantResultsArea').empty();
-                for (var i = 0; i < numberOfRestaurants; i++) {
-                    var restaurantURL = responseRestaurantInfo.restaurants[i].restaurant.url;
-                    var restaurantName = responseRestaurantInfo.restaurants[i].restaurant.name;
-                    // $('#restaurantCard').append('<div><a href="' + restaurantURL + '"> '+ (i+1) + '. ' + restaurantName + '</a></div>');
-
-                    $('#restaurantResultsArea').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/hamburger.png" alt="result icon"><a class="linkMod" href="' + restaurantURL + '"' + ' target="_blank">' + restaurantName + '</a></div></div>');
-
-
-                }
-
-            });
+            restaurantAPICalls();
             // End of Restaurant API ====================
 
         });//end of google submit function
@@ -341,8 +298,127 @@ $(document).ready(function () {
             });
             //End of Firebase Main
         })
+    });   
+
+    // ============== HIKING ============== 
+    //Start of Hiking Functions and Event Listeners (Next and Prev buttons) ====================
+
+    var hikingAPICalls = function() {
+        var maxDistance = 100;
+        var maxResults = 200;
+        var queryURL_Hiking = 'https://www.hikingproject.com/data/get-trails?lat='+lat+'&lon='+lng+'&maxDistance='+maxDistance+'&maxResults='+maxResults+'&key=200364142-c73ec0ae2d02db6031cef492b6b86f45'
+        $.ajax({
+            url: queryURL_Hiking,
+            method: "GET"
+        }).then(function(responseHikingInfo) {
+            hikingResults = responseHikingInfo.trails;
+            // console.log(queryURL_Hiking);
+            // console.log("Hiking API Data:");
+            // console.log(responseHikingInfo);
+            newHikingTrails(responseHikingInfo.trails);
+        }); 
+    }
+
+        
+    var newHikingTrails = function(data) {
+        $('#hikingResultsArea').empty();
+        //console.log ('number of trails available within max distance: '+numberOfTrails)
+        for (var i = currentTrailCount; i < currentTrailCount + 5; i++) {
+            var locationURL = data[i].url;
+            var locationName = data[i].name;
+            // $('#hikingCard').append('<div><a href="' + locationURL + '"> '+ (i+1) + '. ' + locationName + '</a></div>');
+            
+            $('#hikingResultsArea').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/tree.png" alt="result icon"><a class="linkMod" href="' + locationURL + '"' + ' target="_blank">' + locationName + '</a></div></div>');
+            
+
+        };
+
+    };
+
+    $("#nextTrail").on("click", function(){
+        if (currentTrailCount < 195) {
+            currentTrailCount += 5;
+            console.log('current Trail count: ' + currentTrailCount);
+        } else {
+            currentTrailCount = 0;
+            console.log('current Trail count: ' + currentTrailCount);
+        }
+        //currentTrailCount += 5;
+        newHikingTrails(hikingResults);
     });
 
+    $("#prevTrail").on("click", function(){
+        if (currentTrailCount <= 0) {
+            currentTrailCount = 195;
+            console.log('current Trail count: ' + currentTrailCount);
+        } else {
+            currentTrailCount -= 5;
+            console.log('current Trail count: ' + currentTrailCount);
+        }
+   
+        newHikingTrails(hikingResults);
+    });
+
+    //End of Hiking Functions and Event Listeners (Next and Prev buttons) ====================
+
+    // ============== RESTAURANT ============== 
+    //Start of Restaurant Functions and Event Listeners (Next and Prev buttons) ====================
+
+    
+
+    var newRestaurants = function(data){ 
+        $('#restaurantResultsArea').empty();
+        
+        for (var i = 0; i < 5; i++){
+            console.log('rendering hiking trails')
+            var restaurantURL = data[i].restaurant.url;
+            var restaurantName = data[i].restaurant.name;
+            // $('#restaurantCard').append('<div><a href="' + restaurantURL + '"> '+ (i+1) + '. ' + restaurantName + '</a></div>');
+            $('#restaurantResultsArea').append('<div id="resultEntry" class="row container"><div class="resultWrapper"><img class="resultIcon float-left p-1 img-responsive" src="assets/images/hamburger.png" alt="result icon"><a class="linkMod" href="' + restaurantURL + '"' + ' target="_blank">' + restaurantName + '</a></div></div>');
+        }
+        
+    };
+
+    var restaurantAPICalls = function() {
+        var queryURL_Restaurant = 'https://developers.zomato.com/api/v2.1/search?start='+currentRestaurantCount+'&count=5&lat='+lat+'&lon='+lng+'&radius=30000';
+
+        $.ajax({
+            url: queryURL_Restaurant,
+            method: "GET",
+            "headers": {
+                "user-key": "484b921e03f7cc2c9335696b2d2ff5e3",
+                "accept": "application/json"
+            }
+        }).then(function(responseRestaurantInfo) {
+            //console.log ('Restaurant Resutls: '+restaurantResults)
+            newRestaurants(responseRestaurantInfo.restaurants)         
+        });
+    }
+
+    $("#nextRestaurant").on("click", function(){
+        if (currentRestaurantCount < 95) {
+            currentRestaurantCount += 5;
+            console.log('current Restaurant count: ' + currentRestaurantCount);
+        } else {
+            currentRestaurantCount = 0;
+            console.log('current Restaurant count: ' + currentRestaurantCount);
+        }
+        restaurantAPICalls();
+    });
+
+    $("#prevRestaurant").on("click", function(){
+        if (currentRestaurantCount <= 0) {
+            currentRestaurantCount = 95;
+            console.log('current Restaurant count: ' + currentRestaurantCount);
+        } else {
+            currentRestaurantCount -= 5;
+            console.log('current Restaurant count: ' + currentRestaurantCount);
+        }
+        restaurantAPICalls();
+    });
+
+    //End of Restaurant Functions and  Event Listener (Next and Prev buttons) ====================
+    
 });
 
 
