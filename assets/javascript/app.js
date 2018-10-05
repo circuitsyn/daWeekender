@@ -16,14 +16,18 @@ $(document).ready(function () {
     //Bring firebase down to connect for manipulation
     var database = firebase.database();
 
+    database.ref('/searches').limitToLast(1).on("child_added", function(snapshot) {
+        recentSearch = snapshot.val().searchTermServ
+
+  
+
     //receive data from firebase and store in variables - limit to 5 recent searches
     database.ref('/searches').limitToLast(5).on("child_added", function (snapshot) {
 
         searchTerm = snapshot.val().searchTermServ;
-
         //Append data to results card
         $('#recentSearchesArea').append('<button id="search-button" type="button" class="btn btn-success resultButton">' + searchTerm + '</button><br>');
-
+    });
     //=====================================================================
     //Background Image JS
 
@@ -36,27 +40,9 @@ $(document).ready(function () {
     //======================================================================
 
     // start of google map and geocode api calls and functions
-    // grab our search button ID
-    // var submitForm = $('#search-button');
-    // create on click function to run when we click submit
     function results() {
-        // Prevent page reload on submit
-        // event.preventDefault();
 
-        // -------firebase component insert------- 
-        // // store value of search term in firebase variable
-        // searchTerm = $("#search-input").val()
-        // // push value to firebase
-        // database.ref('/searches').push({
-        //     searchTermServ: searchTerm,
-        // });
-        // // --------------------------------------
-
-
-        // location varible
-        // var location = $("#search-input").val();
-
-        var queryUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + searchTerm + "&key=AIzaSyBoDweaPm-2OM397JbMV3n1L-WqHM6ABOM"
+        var queryUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + recentSearch + "&key=AIzaSyBoDweaPm-2OM397JbMV3n1L-WqHM6ABOM"
         $.ajax({
             url: queryUrl,
             method: "GET"
@@ -75,7 +61,7 @@ $(document).ready(function () {
             // log our formal address
             console.log(dest);
             // push formated_address to #mainline div
-            $('#mainLine').text(dest);
+            $('#main').text(dest);
             // create a map variable
             var map;
             // function to create our map
@@ -341,32 +327,21 @@ $(document).ready(function () {
     // run results function
     results();
 
+
+            //====================================================================
+            // create variable for landingform to add topic
+            var landingForm = $('#add-topic');
+            // on click funciton triggered on landing page
+            landingForm.on("click", function(event) {
+            // make recentSearch qual to topic-input
+            recentSearch = $("#topic-input").val()
+            // push value to firebase
+            database.ref('/searches').push({
+                    searchTermServ: recentSearch,
+            });
+            //End of Firebase Main
+        })
     });
-    //End of Firebase Main
-    //====================================================================
-    var landingForm = $('#add-topic');
-
-    landingForm.on("click", function(event) {
-
-
-    //        // -------firebase component insert------- 
-    //    // store value of search term in firebase variable
-    //    searchTerm = $("#topic-input").val()
-    //    // push value to firebase
-    //    database.ref().set({
-    //         searchTermServ: searchTerm,
-
-            
-    //    });
-    // -------firebase component insert------- 
-    // store value of search term in firebase variable
-    searchTerm = $("#topic-input").val()
-    // push value to firebase
-    database.ref('/searches').push({
-            searchTermServ: searchTerm,
-    });
-    // --------------------------------------
-});
 
 });
 
