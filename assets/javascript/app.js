@@ -16,18 +16,19 @@ $(document).ready(function () {
     //Bring firebase down to connect for manipulation
     var database = firebase.database();
 
+    database.ref('/searches').limitToLast(1).on("child_added", function(snapshot) {
+        recentSearch = snapshot.val().searchTermServ
+
+  
+
     //receive data from firebase and store in variables - limit to 5 recent searches
     database.ref('/searches').limitToLast(5).on("child_added", function (snapshot) {
 
         searchTerm = snapshot.val().searchTermServ;
-
         //Append data to results card
-        $('#recentSearchesArea').append('<button id="search-button" type="button" class="btn btn-success resultButton">' + searchTerm + '</button><br>')
-
+        $('#recentSearchesArea').append('<button id="search-button" type="button" class="btn btn-success resultButton">' + searchTerm + '</button><br>');
     });
-    //End of Firebase Main
-    //====================================================================
-
+    //=====================================================================
     //Background Image JS
 
     var images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg'];
@@ -39,31 +40,13 @@ $(document).ready(function () {
     //======================================================================
 
     // start of google map and geocode api calls and functions
-    // grab our search button ID
-    var submitForm = $('#search-button');
-    // create on click function to run when we click submit
-    submitForm.on("click", function (event) {
-        // Prevent page reload on submit
-        event.preventDefault();
+    function results() {
 
-        // -------firebase component insert------- 
-        // store value of search term in firebase variable
-        searchTerm = $("#search-input").val()
-        // push value to firebase
-        database.ref('/searches').push({
-            searchTermServ: searchTerm,
-        });
-        // --------------------------------------
-
-
-        // location varible
-        var location = $("#search-input").val();
-
-        var queryUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + location + "&key=AIzaSyBoDweaPm-2OM397JbMV3n1L-WqHM6ABOM"
+        var queryUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + recentSearch + "&key=AIzaSyBoDweaPm-2OM397JbMV3n1L-WqHM6ABOM"
         $.ajax({
             url: queryUrl,
             method: "GET"
-        }).then(function (response) {
+        }).done(function (response) {
             // log full response
             console.log("Location API Data:");
             console.log(response);
@@ -78,7 +61,7 @@ $(document).ready(function () {
             // log our formal address
             console.log(dest);
             // push formated_address to #mainline div
-            $('#mainLine').text(dest);
+            $('#main').text(dest);
             // create a map variable
             var map;
             // function to create our map
@@ -320,7 +303,7 @@ $(document).ready(function () {
             $.ajax({
                 url: queryURL_Hiking,
                 method: "GET"
-            }).then(function (responseHikingInfo) {
+            }).done(function (responseHikingInfo) {
 
                 //console.log(queryURL_Hiking);
                 console.log("Hiking API Data:");
@@ -352,7 +335,7 @@ $(document).ready(function () {
                     "user-key": "484b921e03f7cc2c9335696b2d2ff5e3",
                     "accept": "application/json"
                 }
-            }).then(function (responseRestaurantInfo) {
+            }).done(function (responseRestaurantInfo) {
                 //console.log(queryURL_Restaurant);
                 console.log("Retaurant API Data:");
                 console.log(responseRestaurantInfo);
@@ -371,13 +354,33 @@ $(document).ready(function () {
 
 
                 }
+
             });
             // End of Restaurant API ====================
 
         });//end of google submit function
 
+    };
+    // run results function
+    results();
+
+
+            //====================================================================
+            // create variable for landingform to add topic
+            var landingForm = $('#add-topic');
+            // on click funciton triggered on landing page
+            landingForm.on("click", function(event) {
+            // make recentSearch qual to topic-input
+            recentSearch = $("#topic-input").val()
+            // push value to firebase
+            database.ref('/searches').push({
+                    searchTermServ: recentSearch,
+            });
+            //End of Firebase Main
+        })
     });
-})
+
+});
 
 
 
