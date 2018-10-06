@@ -103,11 +103,12 @@ $(document).ready(function () {
                 //=========================================================================
 
                 //start of Weather API -- darksky.net
+            
                 var today = moment();
                 console.log(today["_d"].toString().substring(0, 3));
-
+    
                 var dayOfWeek = today["_d"].toString().substring(0, 3);
-
+    
                 if (dayOfWeek == "Sat" || dayOfWeek == "Sun") {
                     var friRequestDay = moment().add(3, "days").day("Friday");  //.unix();
                     console.log(friRequestDay.unix());
@@ -124,107 +125,136 @@ $(document).ready(function () {
                     var sunRequestDay = moment().add(1, "week").day("Sunday");
                     console.log(sunRequestDay.unix());
                 }
-
+    
                 //grab the weekend forecast info for each day  -----> display date as well
                 var weekendForecast = {
                     friday: {
                         icon: "",
                         temperatureHigh: 0,
-                        temperatureLow: 0
+                        temperatureLow: 0,
+                        time: 0
                     },
                     saturday: {
                         icon: "",
                         temperatureHigh: 0,
-                        temperatureLow: 0
+                        temperatureLow: 0,
+                        time: 0
                     },
                     sunday: {
                         icon: "",
                         temperatureHigh: 0,
-                        temperatureLow: 0
+                        temperatureLow: 0,
+                        time: 0
                     }
                 }
-
+    
                 //creating AJAX call for when search is executed  -----> 
+                //AJAX call for Friday
                 $.ajax({
                     url: "https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/79f28cba6a99105fef42cde285bc6226/" + lat + "," + lng + "," + friRequestDay.unix(),
                     method: "GET"
                 }).done(function (data) {
-
+    
                     var dailyResponse = data.daily.data;
                     console.log(dailyResponse);
-
+    
                     //push daily response data into the weekend forecast object
+                    weekendForecast.friday.time = data.daily.data[0].time;
                     weekendForecast.friday.icon = data.daily.data[0].icon;
                     weekendForecast.friday.temperatureHigh = data.daily.data[0].temperatureHigh;
                     weekendForecast.friday.temperatureLow = data.daily.data[0].temperatureLow;
+                    console.log(weekendForecast.friday.time);
                     console.log(weekendForecast.friday.icon);
                     console.log(weekendForecast.friday.temperatureHigh);
                     console.log(weekendForecast.friday.temperatureLow);
-
+    
+                    //AJAX call for Saturday
                     $.ajax({
                         url: "https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/79f28cba6a99105fef42cde285bc6226/" + lat + "," + lng + "," + satRequestDay.unix(),
                         method: "GET"
                     }).done(function (data) {
-
+    
                         var dailyResponse = data.daily.data;
                         console.log(dailyResponse);
-
+    
                         //push daily response data into the weekend forecast object
+                        weekendForecast.saturday.time = data.daily.data[0].time;
                         weekendForecast.saturday.icon = data.daily.data[0].icon;
                         weekendForecast.saturday.temperatureHigh = data.daily.data[0].temperatureHigh;
                         weekendForecast.saturday.temperatureLow = data.daily.data[0].temperatureLow;
+                        console.log(weekendForecast.saturday.time);
                         console.log(weekendForecast.saturday.icon);
                         console.log(weekendForecast.saturday.temperatureHigh);
                         console.log(weekendForecast.saturday.temperatureLow);
-
+    
+                        //AJAX call for Sunday
                         $.ajax({
                             url: "https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/79f28cba6a99105fef42cde285bc6226/" + lat + "," + lng + "," + sunRequestDay.unix(),
                             method: "GET"
                         }).done(function (data) {
-
+    
                             var dailyResponse = data.daily.data;
                             console.log(dailyResponse);
-
+    
                             //push daily response data into the weekend forecast object
+                            weekendForecast.sunday.time = data.daily.data[0].time;
                             weekendForecast.sunday.icon = data.daily.data[0].icon;
                             weekendForecast.sunday.temperatureHigh = data.daily.data[0].temperatureHigh;
                             weekendForecast.sunday.temperatureLow = data.daily.data[0].temperatureLow;
+                            console.log(weekendForecast.sunday.time);
                             console.log(weekendForecast.sunday.icon);
                             console.log(weekendForecast.sunday.temperatureHigh);
                             console.log(weekendForecast.sunday.temperatureLow);
-
+    
                             console.log(weekendForecast);
-
+    
                             //variables for pushing forecast data to HTML
                             var friHighTemp = weekendForecast.friday.temperatureHigh;
                             var friLowTemp = weekendForecast.friday.temperatureLow;
-                            var friIcon = weekendForecast.friday.icon;
                             var satHighTemp = weekendForecast.saturday.temperatureHigh;
                             var satLowTemp = weekendForecast.saturday.temperatureLow;
-                            var satIcon = weekendForecast.saturday.icon;
                             var sunHighTemp = weekendForecast.sunday.temperatureHigh;
                             var sunLowTemp = weekendForecast.sunday.temperatureLow;
-                            var sunIcon = weekendForecast.sunday.icon;
-
+    
+                            //convert temp data to whole numbers
+                            friHighTemp = Math.round(friHighTemp);
+                            friLowTemp = Math.round(friLowTemp);
+                            satHighTemp = Math.round(satHighTemp);
+                            satLowTemp = Math.round(satLowTemp);
+                            sunHighTemp = Math.round(sunHighTemp);
+                            sunLowTemp = Math.round(sunLowTemp);
+    
+                            //convert time to calendar date using moment.js
+                            friDate = friRequestDay.format("ll");
+                            console.log(friDate);
+                            satDate = satRequestDay.format("ll");
+                            console.log(satDate);
+                            sunDate = sunRequestDay.format("ll");
+                            console.log(sunDate);
+      
                             //append weather data to page using jquery
-                            $(".forecast").append(
-                                '<p class="friHighTemp">' + friHighTemp + "&#8457;" + '</p>' +
-                                '<p class="friLowTemp">' + friLowTemp + "&#8457;" + '</p>' +
-                                '<p class="friPrecip">' + friIcon + '</p>' +
-                                '<p class="satHighTemp">' + satHighTemp + "&#8457;" + '</p>' +
-                                '<p class="satLowTemp">' + satLowTemp + "&#8457;" + '</p>' +
-                                '<p class="satPrecip">' + satIcon + '</p>' +
-                                '<p class="sunHighTemp">' + sunHighTemp + "&#8457;" + '</p>' +
-                                '<p class="sunLowTemp">' + sunLowTemp + "&#8457;" + '</p>' +
-                                '<p class="sunPrecip">' + sunIcon + '</p>'
+                            $("#friWeather").html(
+                                '<p class="friDate">' + friDate + '</p>' +
+                                '<p class="friHighTemp">' + "High  " + friHighTemp + "&#8457;" + '</p>' +
+                                '<p class="friLowTemp">' + "Low  " + friLowTemp + "&#8457;" + '</p>'
                             );
-
+                            $("#satWeather").html(
+                                '<p class="satDate">' + satDate + '</p>' +
+                                '<p class="satHighTemp">' + "High  " + satHighTemp + "&#8457;" + '</p>' +
+                                '<p class="satLowTemp">' + "Low  " + satLowTemp + "&#8457;" + '</p>'   
+                            );
+                            $("#sunWeather").html(
+                                '<p class="sunDate">' + sunDate + '</p>' +
+                                '<p class="sunHighTemp">' + "High  "  + sunHighTemp + "&#8457;" + '</p>' +
+                                '<p class="sunLowTemp">' + "Low  " + sunLowTemp + "&#8457;" + '</p>' 
+                            );
+    
                             //add skycons to weather data
-                            var skycons = new Skycons({ "color": "blue" });
+                            var skycons = new Skycons({ "color": "#4d94ff" });
                             skycons.add(document.getElementById("friSkyCon"), weekendForecast.friday.icon);
                             skycons.add(document.getElementById("satSkyCon"), weekendForecast.saturday.icon);
                             skycons.add(document.getElementById("sunSkyCon"), weekendForecast.sunday.icon);
-
+    
                             skycons.play();
 
                         });
@@ -698,7 +728,6 @@ $(document).ready(function () {
     //End of Restaurant Functions and  Event Listener (Next and Prev buttons) ====================
     
 });
-
 
 
 
