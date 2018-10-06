@@ -124,8 +124,8 @@
     <div id="cardSection" class="row container">
         
             <!-- Location API - Google -->
-            <div class="col-md-4 d-flex justify-content-center">
-                <div class="card" style="width: 18rem;">
+            <div class="col-md-8 d-flex justify-content-center">
+                <div class="card" style="width: 40rem;">
                     <div id='map'>
                     <img class="card-img-top" src="assets/images/map.png" alt="Map">
                 </div>
@@ -135,6 +135,42 @@
                     <div class="text-center">
                         <a id='map-direction' class="btn btn-success">Directions to Destination</a>
                     </div>  
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Searches -->
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="assets/images/recentSearches.png" alt="Recent Searches">
+                    <div id="resultCard" class="card-body">
+                        <h5 class="card-title">Top 5 Recent Searches</h5>
+                        <p class="card-text">Wan't to rerun a search? Just click on one below!</p>
+                        <div id="recentSearchesArea" class="resultList">
+                    
+                        </div> 
+                    </div>
+                </div>       
+            </div>   
+
+
+         <!-- Second Row of Cards -->
+        <div id="cardSection" class="row container">
+
+            <!--Hiking-->
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="card" style="width: 18rem;">
+                    <div>
+                    <img class="card-img-top" src="assets/images/hiking.png" alt="hiking_trails">
+                </div>
+                    <div id="eventCard" class="card-body">
+                        <h5 class="card-title">Hiking</h5>
+                        <p class="card-text">Explore the beauty of nature hiking through some of the most exciting trails</p>
+                        <div id="hikingResultsArea" class="resultList">
+                    
+                        </div> 
+                        <button id="prevTrail" class="btn btn-success">Prev</button>
+                        <button id="nextTrail" class="btn btn-success">Next</button>
                     </div>
                 </div>
             </div>
@@ -164,61 +200,14 @@
                         <h5 class="card-title">Events</h5>
                         <p class="card-text">Local events in the area directly setup and run by locals themselves!</p>
                         <div id="eventResultArea" class="resultList">
-                    
+
                         </div>  
+                        <button id="prevEvent" class="btn btn-success">Prev</button>
+                        <button id="nextEvent" class="btn btn-success">Next</button>
                     </div>
                     
                 </div>
-            </div>
-
-
-         <!-- Second Row of Cards -->
-        <div id="cardSection" class="row container">
-
-            <!--Hiking-->
-            <div class="col-md-4 d-flex justify-content-center">
-                <div class="card" style="width: 18rem;">
-                    <div>
-                    <img class="card-img-top" src="assets/images/hiking.png" alt="hiking_trails">
-                </div>
-                    <div id="eventCard" class="card-body">
-                        <h5 class="card-title">Hiking</h5>
-                        <p class="card-text">Explore the beauty of nature hiking through some of the most exciting trails</p>
-                        <div id="hikingResultsArea" class="resultList">
-                    
-                        </div> 
-                        <button id="prevTrail" class="btn btn-success">Prev</button>
-                        <button id="nextTrail" class="btn btn-success">Next</button>
-                    </div>
-                </div>
-            </div>
-
-            <!--Card2-->
-            <div class="col-md-4 d-flex justify-content-center">   
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="assets/images/spaguetti.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">API 6</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Recent Searches -->
-            <div class="col-md-4 d-flex justify-content-center">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="assets/images/recentSearches.png" alt="Recent Searches">
-                    <div id="resultCard" class="card-body">
-                        <h5 class="card-title">Top 5 Recent Searches</h5>
-                        <p class="card-text">Wan't to rerun a search? Just click on one below!</p>
-                        <div id="recentSearchesArea" class="resultList">
-                    
-                        </div> 
-                    </div>
-                </div>    
-                                      
-                
-            </div>    
+            </div>  
         </div>
 
     </div>
@@ -257,6 +246,49 @@
           </div>
         </div>
       </div>
+    <!-- Link Modals -->
+    <!-- Hiking Modal -->
+    <!-- Large modal -->
+        <div class="modal fade hikingModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!-- Image Row -->
+                <div class="container modalMain">
+                    <div class="row modalImage">
+
+                    </div>
+                    <div class="row modalTitle">
+                    
+                    </div>
+
+                    <div class="row modalLocation">
+
+                    </div>
+                            
+                    <div class="row modalStats">
+                        <!-- Rating Section -->
+                        <div id="modalRating" class="col-md-4">
+
+                        </div>
+                        <!-- Difficulty Section -->
+                        <div id="modalDifficulty" class="col-md-4">
+                            
+                        </div>
+                        <!-- Length Section -->
+                        <div id="modalLength" class="col-md-4">
+                        
+                        </div>
+                    </div>
+
+                    <!-- Summary -->
+                    <div class="row modalSummary">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
