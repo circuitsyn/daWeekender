@@ -7,7 +7,7 @@
     display: block
 }
 
-#resultEntry {
+#resultEntry, #resultHikingContainer {
     padding: 0px;
     margin: auto;
 }
@@ -27,6 +27,9 @@
 
 .resultWrapper {
     padding: 0px;
+    margin-top:5px;
+    margin-bottom: 5px;
+    margin-left: 0px;
     
 }
 
