@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>The Weekender Results</title>
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-app.js"></script>
+
+    <!-- Add additional services that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-database.js"></script>
+    
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="shortcut icon" href="assets/images/favicon.png"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/results.css">
+    <link rel="stylesheet"  href="assets/css/ourStory.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/weather.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css" integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw" crossorigin="anonymous">
+  
+    <!-- animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw" crossorigin="anonymous">
+
+    <!-- google maps  -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoDweaPm-2OM397JbMV3n1L-WqHM6ABOM" async defer></script>
+    <!-- <link rel="stylesheet" href="assets/css/landing.css"> -->
+  </head>
+  <body id="background">
+      
+    <div class="container">
+    <!-- NavBar -->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent navWrap">
+            <a class="navbar-brand" href="index.html"><img class="headerIMG" src="assets/images/theweekender.png" height="140px" alt="The Weekender"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="collapse navbar-collapse justify-content-center navbar navbar" id="navbarNav">
+                <ul class="navbar-nav nav-pills font-weight-bold">
+                    
+                    <li class="nav-item">
+                    <a class="nav-link badge-success" href="results.html">Results</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="ourStory.html">Our Story</a>
+                    </li>
+                    <li class="nav-item">
+                    <button id="contactUsButton" type="button" class="btn" data-toggle="modal" data-target="#exampleModal" data-whatever="">Contact Us</button>
+                    <!-- <a class="nav-link" href="#">Contact Us</a> -->
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input id="topic-input" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" required/>
+                    <button id="add-topic" class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+
+    <!-- Content Section -->
+
+
+        <div id="mainSection" class="row container">
+            <div class="col-md-7 container">
+                <h1 id="mainLine">
+                   <div id='main'>Dream Big!</div>
+                </h1>
+                <h3 id="secondaryLine">
+                    Let's get your weekend trip started! Search for a destination. Then check out the weather and exciting details below!
+                </h3>
+
+            </div>
+            <div class="col-md-5 container">
+                <div class="animated lightSpeedIn">
+                    <div class="row">
+                        <div class="card text-center" style="width: 9rem;">
+                            <div class="card-body" id="weatherCard">
+                                <h5 class="card-title">Friday</h5>
+                                <p class="card-text" id="friWeather"></p>
+                                <canvas id="friSkyCon" width="90" height="90"></canvas>
+                            </div>
+                        </div>
+                        <div class="card text-center" style="width: 9rem;">
+                            <div class="card-body" id="weatherCard">
+                                <h5 class="card-title">Saturday</h5>
+                                <p class="card-text" id="satWeather"></p>
+                                <canvas id="satSkyCon" width="90" height="90"></canvas>
+                            </div>
+                        </div>
+                        <div class="card text-center" style="width: 9rem;">
+                            <div class="card-body" id="weatherCard">
+                                <h5 class="card-title">Sunday</h5>
+                                <p class="card-text" id="sunWeather"></p>
+                                <canvas id="sunSkyCon" width="90" height="90"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card Section Row 1 -->
+    <div id="cardSection" class="row container">
+        
+            <!-- Location API - Google -->
+            <div class="col-md-8 d-flex justify-content-center">
+                <div class="card" style="width: 40rem;">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <div  class="embed-responsive-item" id='map'>
+                        <img class="card-img-top" src="assets/images/map.png" alt="Map">
+                    </div>
+                    </div>
+                    <div class="card-body">
+                    <h5 class="card-title">Location</h5>
+                    <p class="card-text">Can't plan your weekend without knowing where you are going.</p>
+                    <div class="text-center">
+                        <a id='map-direction' class="btn btn-success">Directions to Destination</a>
+                    </div>  
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Searches -->
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="assets/images/recentSearches.png" alt="Recent Searches">
+                    <div id="resultCard" class="card-body">
+                        <h5 class="card-title">Recent Searches</h5>
+                        <p class="card-text">These are the five most recent searches:</p>
+                        <div id="recentSearchesArea" class="resultList">
+                    
+                        </div> 
+                    </div>
+                </div>       
+            </div>   
+
+
+         <!-- Second Row of Cards -->
+        <div id="cardSection" class="row container">
+
+            <!--Hiking-->
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="card" style="width: 18rem;">
+                    <div>
+                    <img class="card-img-top" src="assets/images/hiking.png" alt="hiking_trails">
+                </div>
+                    <div id="eventCard" class="card-body">
+                        <h5 class="card-title">Hiking</h5>
+                        <p class="card-text">Explore the beauty of nature hiking through some of the most exciting trails</p>
+                        <div id="hikingResultsArea" class="resultList">
+                    
+                        </div> 
+                        <button id="prevTrail" class="btn btn-outline-success">Prev</button>
+                        <button id="nextTrail" class="btn btn-outline-success">Next</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Restaurants - Zomato API -->
+            <div class="col-md-4 d-flex justify-content-center">   
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="assets/images/spaguetti.png" alt="Card image cap">
+                    <div id="eventCard" class="card-body">
+                        <h5 class="card-title">Restaurants</h5>
+                        <p class="card-text">Checkout some of the local cuisine!</p>
+                        <div id="restaurantResultsArea" class="resultList">
+                    
+                        </div> 
+                        <button id="prevRestaurant" class="btn btn-outline-success">Prev</button>
+                        <button id="nextRestaurant" class="btn btn-outline-success">Next</button>
+                        <!-- <a href="#" class="btn btn-primary">Learn more</a> -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Events API - Meetup.com -->
+            <div class="col-md-4 d-flex justify-content-center container">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="assets/images/calendar.png" alt="Card image cap">
+                    <div id="eventCard" class="card-body">
+                        <h5 class="card-title">Events</h5>
+                        <p class="card-text">Local events in the area directly setup and run by locals themselves!</p>
+                        <div id="eventResultArea" class="resultList">
+
+                        </div>  
+                        <button id="prevEvent" class="btn btn-outline-success">Prev</button>
+                        <button id="nextEvent" class="btn btn-outline-success">Next</button>
+                    </div>
+                    
+                </div>
+            </div>  
+        </div>
+
+    </div>
+
+    <!-- Contact Us Modal Section -->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                    <label for="full-name" class="col-form-label">Your Name:</label>
+                    <input type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="form-group">
+                  <label for="submitter-email" class="col-form-label">Your E-mail:</label>
+                  <input type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Message:</label>
+                  <textarea class="form-control" id="message-text"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Send message!</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- Link Modals -->
+    <!-- Hiking Modal -->
+    <!-- Large modal -->
+        <div class="modal fade hikingModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!-- Image Row -->
+                <div class="container modalMain">
+                    <div class="row modalImage">
+
+                    </div>
+                    <div class="row modalTitle">
+                    
+                    </div>
+
+                    <div class="row modalLocation">
+
+                    </div>
+                            
+                    <div class="row modalStats">
+                        <!-- Rating Section -->
+                        <div id="modalRating" class="col-md-4">
+
+                        </div>
+                        <!-- Difficulty Section -->
+                        <div id="modalDifficulty" class="col-md-4">
+                            
+                        </div>
+                        <!-- Length Section -->
+                        <div id="modalLength" class="col-md-4">
+                        
+                        </div>
+                    </div>
+
+                    <!-- Summary -->
+                    <div class="row modalSummary">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- moment.js link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js" integrity="sha256-ABVkpwb9K9PxubvRrHMkk6wmWcIHUE9eBxNZLXYQ84k=" crossorigin="anonymous"></script> 
+    <!-- skycons link -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.min.js'></script>
+    <script src="assets/javascript/app.js"></script>
+
+    </body>
+</html>
