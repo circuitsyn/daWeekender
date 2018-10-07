@@ -35,7 +35,7 @@
     <!-- NavBar -->
 
     <nav class="navbar navbar-expand-lg navbar-light bg-transparent navWrap">
-            <a class="navbar-brand" href="results.html"><img class="headerIMG" src="assets/images/theweekender.png" height="140px" alt="The Weekender"></a>
+            <a class="navbar-brand" href="index.html"><img class="headerIMG" src="assets/images/theweekender.png" height="140px" alt="The Weekender"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
@@ -54,7 +54,7 @@
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                    <input id="topic-input" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <input id="topic-input" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" required/>
                     <button id="add-topic" class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>
@@ -109,10 +109,12 @@
             <!-- Location API - Google -->
             <div class="col-md-8 d-flex justify-content-center">
                 <div class="card" style="width: 40rem;">
-                    <div id='map'>
-                    <img class="card-img-top" src="assets/images/map.png" alt="Map">
-                </div>
-                <div class="card-body">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <div  class="embed-responsive-item" id='map'>
+                        <img class="card-img-top" src="assets/images/map.png" alt="Map">
+                    </div>
+                    </div>
+                    <div class="card-body">
                     <h5 class="card-title">Location</h5>
                     <p class="card-text">Can't plan your weekend without knowing where you are going.</p>
                     <div class="text-center">
@@ -127,8 +129,8 @@
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="assets/images/recentSearches.png" alt="Recent Searches">
                     <div id="resultCard" class="card-body">
-                        <h5 class="card-title">Top 5 Recent Searches</h5>
-                        <p class="card-text">Wan't to rerun a search? Just click on one below!</p>
+                        <h5 class="card-title">Recent Searches</h5>
+                        <p class="card-text">These are the five most recent searches:</p>
                         <div id="recentSearchesArea" class="resultList">
                     
                         </div> 

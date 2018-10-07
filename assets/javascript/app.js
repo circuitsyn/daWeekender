@@ -282,10 +282,15 @@ $(document).ready(function () {
         // run results function
         results();
         //====================================================================
-        // create variable for landingform to add topic
-        var landingForm = $('#add-topic');
-        // on click funciton triggered on landing page
-        landingForm.on("click", function(event) {
+        // create variable for search button input
+        var inputForm = $('#add-topic');
+        // on click funciton triggered when add-topic button is clicked
+        inputForm.on("click", function(event) {
+
+            if($("#topic-input").val() == '')
+{
+    event.preventDefault();
+} else
         // make recentSearch qual to topic-input
             recentSearch = $("#topic-input").val()
             // push value to firebase

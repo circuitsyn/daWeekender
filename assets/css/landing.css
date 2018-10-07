@@ -21,6 +21,18 @@ body{
     padding-left: 200px;
 	/* opacity: 0.8; */
 }
+.navbar-toggler {
+    background-color: #808080;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#collapsibleNavbar {
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
 .cb-slideshow,
 .cb-slideshow:after { 
     position: fixed;
