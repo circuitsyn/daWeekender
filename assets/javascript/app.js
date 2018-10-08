@@ -364,6 +364,8 @@ $(document).ready(function () {
                 var image = $('<img>');
                 $(image).attr('src', eventsObject.photo_url);
                 $(image).attr('alt','Meetup Featured Image');
+                $(image).addClass('img-responsive');
+                $(image).addClass('fit');
                 $('.modalImage').empty();
                 $('.modalImage').append(image);
                 
@@ -410,7 +412,7 @@ $(document).ready(function () {
 
                 //Summary text
                 var summaryText = $('<div>');
-                $(summaryText).text(eventsObject.description);
+                $(summaryText).html(eventsObject.description);
                 $('.modalSummary').append(summaryText);
 
             });
@@ -510,6 +512,8 @@ $(document).ready(function () {
             var image = $('<img>');
             $(image).attr('src', hikingObject.imgMedium);
             $(image).attr('alt','Hiking Location Featured Image');
+            $(image).addClass('img-responsive');
+            $(image).addClass('fit');
             $('.modalImage').empty();
             $('.modalImage').append(image);
             
@@ -556,7 +560,8 @@ $(document).ready(function () {
 
             //Summary text
             var summaryText = $('<p>');
-            $(summaryText).text(hikingObject.summary);
+            $(summaryText).addClass("summary");
+            $(summaryText).html(hikingObject.summary);
             $('.modalSummary').append(summaryText);
         });
     }
@@ -594,7 +599,7 @@ $(document).ready(function () {
         $('#restaurantResultsArea').empty();
         
         for (var i = 0; i < 5; i++){
-            console.log('rendering resturants')
+            //console.log('rendering resturants')
             // var restaurantURL = data[i].restaurant.url;
             var restaurantName = data[i].restaurant.name;
             restaurantName = restaurantName.substring(0,20) + '..';
@@ -636,6 +641,8 @@ $(document).ready(function () {
             var image = $('<img>');
             $(image).attr('src', restaurantObject.restaurant.featured_image);
             $(image).attr('alt','Restaurant Featured Image');
+            $(image).addClass('img-responsive');
+            $(image).addClass('fit');
             $('.modalImage').empty();
             $('.modalImage').append(image);
             

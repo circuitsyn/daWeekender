@@ -1,0 +1,47 @@
+.fit {
+    width: auto;
+    max-width: 100%;
+    max-height:225px;
+    border-radius: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+.modalTitle { 
+    font-family: "Great Vibes", cursive; 
+    font-size: 30px;
+    font-weight: normal;
+    text-align: center; 
+    text-shadow: 0 1px 1px #fff; 
+}
+
+.modalLocation { 
+    color: #ff4411; 
+    font-family: 'Trocchi', serif; 
+    font-size: 45px; 
+    font-weight: normal; 
+    line-height: 48px; 
+    margin: 0; 
+    text-align: center;
+}
+
+.modal-body {
+    background-image: url("../images/light-veneer.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.modalStats, .modalSummary { 
+    color: #333; 
+    font-family: 'Source Sans Pro', sans-serif; 
+    font-size: 18px; 
+    line-height: 32px; 
+    margin: 0 0 24px; 
+}
+
+.summary {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    overflow: hidden;
+}
