@@ -59,12 +59,24 @@
     box-shadow: none;
 }
 
+footer {
+    width: 60%;
+    
+}
+
 .page-footer {
     margin: auto;
     border-radius: 15px;
 }
 
 #apiIMG {
-    padding: 20px;
+    padding: 3px;
     display: inline-block;
 }
+
+.footer-copyright{
+    margin-bottom: 10px;
+}
+
+
+
