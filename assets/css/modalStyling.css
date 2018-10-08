@@ -8,14 +8,23 @@
     margin-right: auto; 
 }
 
+/* Styling for title */
 .modalTitle { 
     font-family: "Great Vibes", cursive; 
     font-size: 30px;
     font-weight: normal;
-    text-align: center; 
     text-shadow: 0 1px 1px #fff; 
-}
+    text-align: center;
+    width: 100%;
+} 
 
+/* Center title */
+/* .modal-title {
+    text-align: center;
+    width: 100%; 
+} */
+
+/* Styling for location */
 .modalLocation { 
     color: #ff4411; 
     font-family: 'Trocchi', serif; 
@@ -26,12 +35,19 @@
     text-align: center;
 }
 
-.modal-body {
+/* Add color to content background */
+.modalContent {
+    background-color: rgba(135, 222, 222);
+}
+
+/* Add background image to modals */
+.modalBody {
     background-image: url("../images/light-veneer.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
+/* Styling the text in Stats and Summary */
 .modalStats, .modalSummary { 
     color: #333; 
     font-family: 'Source Sans Pro', sans-serif; 
@@ -42,6 +58,5 @@
 
 .summary {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
     overflow: hidden;
 }

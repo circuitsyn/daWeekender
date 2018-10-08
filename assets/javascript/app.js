@@ -372,41 +372,41 @@ $(document).ready(function () {
                 //Append Title
                 var a = $('<a>');
                 $(a).attr('href', eventsObject.event_url);
-                $(a).text(eventsObject.name);
+                $(a).html(eventsObject.name);
                 $(a).attr('target', '_blank');
                 $('.modalTitle').empty();
                 $('.modalTitle').append(a);
 
                 //Append Location
-                var location = $('<h4>');
-                $(location).text(eventsObject.venue.name + ': ' + eventsObject.venue.address_1 + ' ' + eventsObject.venue.city);
+                var location = $('<h3>');
+                $(location).html(eventsObject.venue.name + ': ' + eventsObject.venue.address_1 + ' ' + eventsObject.venue.city);
                 $('.modalLocation').empty();
                 $('.modalLocation').append(location);
 
                 //Append Stats
                 //RSVP
-                var rating = $('<h3>');
-                $(rating).text('RSVP Count: ' + eventsObject.yes_rsvp_count);
+                var rating = $('<h4>');
+                $(rating).html('<b>RSVP Count: </b>' + eventsObject.yes_rsvp_count);
                 $('#modalRating').empty();
                 $('#modalRating').append(rating);
 
                 //Waitlist
-                var difficulty = $('<h3>');
-                $(difficulty).text('Waitlist Count: ' + eventsObject.waitlist_count);
+                var difficulty = $('<h4>');
+                $(difficulty).html('<b>Waitlist Count: </b>' + eventsObject.waitlist_count);
                 $('#modalDifficulty').empty();
                 $('#modalDifficulty').append(difficulty);
 
                 //Visibility
-                var length = $('<h3>');
-                $(length).text('Visibility: ' + eventsObject.visibility);
+                var length = $('<h4>');
+                $(length).html('<b>Visibility: </b>' + eventsObject.visibility);
                 $('#modalLength').empty();
                 $('#modalLength').append(length);
 
 
                 //Append Summary
                 //Summary title
-                var summaryHeader = $('<h3>');
-                $(summaryHeader).text('Summary: ');
+                var summaryHeader = $('<h4>');
+                $(summaryHeader).html('<b>Summary: </b>');
                 $('.modalSummary').empty();
                 $('.modalSummary').append(summaryHeader);
 
@@ -520,41 +520,41 @@ $(document).ready(function () {
             //Append Title
             var a = $('<a>');
             $(a).attr('href', hikingObject.url);
-            $(a).text(hikingObject.name);
+            $(a).html(hikingObject.name);
             $(a).attr('target', '_blank');
             $('.modalTitle').empty();
             $('.modalTitle').append(a);
 
             //Append Location
-            var location = $('<h4>');
-            $(location).text(hikingObject.location);
+            var location = $('<h3>');
+            $(location).html(hikingObject.location);
             $('.modalLocation').empty();
             $('.modalLocation').append(location);
 
             //Append Stats
             //Rating
-            var rating = $('<h3>');
-            $(rating).text('Rating (1-5): ' + hikingObject.stars);
+            var rating = $('<h4>');
+            $(rating).html('<b>Rating (1-5): </b>' + hikingObject.stars);
             $('#modalRating').empty();
             $('#modalRating').append(rating);
 
             //Difficulty
-            var difficulty = $('<h3>');
-            $(difficulty).text('Difficulty: ' + hikingObject.difficulty);
+            var difficulty = $('<h4>');
+            $(difficulty).html('<b>Difficulty: </b>' + hikingObject.difficulty);
             $('#modalDifficulty').empty();
             $('#modalDifficulty').append(difficulty);
 
             //Length
-            var length = $('<h3>');
-            $(length).text('Distance (miles): ' + hikingObject.length);
+            var length = $('<h4>');
+            $(length).html('<b>Distance (miles): </b>' + hikingObject.length);
             $('#modalLength').empty();
             $('#modalLength').append(length);
 
 
             //Append Summary
             //Summary title
-            var summaryHeader = $('<h3>');
-            $(summaryHeader).text('Summary: ');
+            var summaryHeader = $('<h4>');
+            $(summaryHeader).html('<b>Summary: </b>');
             $('.modalSummary').empty();
             $('.modalSummary').append(summaryHeader);
 
@@ -649,48 +649,48 @@ $(document).ready(function () {
             //Append Title
             var a = $('<a>');
             $(a).attr('href', restaurantObject.restaurant.url);
-            $(a).text(restaurantObject.restaurant.name);
+            $(a).html(restaurantObject.restaurant.name);
             $(a).attr('target', '_blank');
             $('.modalTitle').empty();
             $('.modalTitle').append(a);
 
             //Append Location
-            var location = $('<h4>');
-            $(location).text(restaurantObject.restaurant.location.locality_verbose);
+            var location = $('<h3>');
+            $(location).html(restaurantObject.restaurant.location.locality_verbose);
             $('.modalLocation').empty();
             $('.modalLocation').append(location);
 
             //Append Stats
             //Rating
-            var rating = $('<h3>');
-            $(rating).text('Rating (1-5): ' + restaurantObject.restaurant.user_rating.aggregate_rating);
+            var rating = $('<h4>');
+            $(rating).html('<b>Rating (1-5): </b>' + restaurantObject.restaurant.user_rating.aggregate_rating);
             $('#modalRating').empty();
             $('#modalRating').append(rating);
 
             //Cost
-            var difficulty = $('<h3>');
-            $(difficulty).text('Avg. Cost for Two($): ' + restaurantObject.restaurant.average_cost_for_two);
+            var difficulty = $('<h4>');
+            $(difficulty).html('<b>Avg. Cost for Two($): </b>' + restaurantObject.restaurant.average_cost_for_two);
             $('#modalDifficulty').empty();
             $('#modalDifficulty').append(difficulty);
 
             //Cuisine
-            var length = $('<h3>');
-            $(length).text('Cuisine(s): ' + restaurantObject.restaurant.cuisines);
+            var length = $('<h4>');
+            $(length).html('<b>Cuisine(s): </b>' + restaurantObject.restaurant.cuisines);
             $('#modalLength').empty();
             $('#modalLength').append(length);
 
 
             //Append Menu Items
-            //Menu Text
-            var summaryHeader = $('<h3>');
-            $(summaryHeader).text('Menu: ');
+            //Menu.html
+            var summaryHeader = $('<h4>');
+            $(summaryHeader).html('<b>Menu: </b>');
             $('.modalSummary').empty();
             $('.modalSummary').append(summaryHeader);
 
             //Append Menu Link
             var a = $('<a>');
             $(a).attr('href', restaurantObject.restaurant.menu_url);
-            $(a).text('Click here to view the menu!');
+            $(a).html('Click here to view the menu!');
             $(a).attr('target', '_blank');
             $('.modalSummary').empty();
             $('.modalSummary').append(a);
