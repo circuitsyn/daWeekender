@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/results.css">
     <link rel="stylesheet"  href="assets/css/ourStory.css">
+    <link rel="stylesheet"  href="assets/css/modalStyling.css">
     <link rel="stylesheet" type="text/css" href="assets/css/weather.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css" integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw" crossorigin="anonymous">
   
@@ -231,62 +232,72 @@
           </div>
         </div>
       </div>
+
     <!-- Link Modals -->
-    <!-- Hiking Modal -->
-    <!-- Large modal -->
-        <div class="modal fade hikingModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <!-- Image Row -->
-                <div class="container modalMain">
-                    <div class="row modalImage">
-
+    <!-- All Link Modals utilize Hiking Modal HTML -->
+    <!-- ================ HIKING MODAL ================ -->
+        <div class="modal animated pulse bd-example-modal-lg hikingModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content modalContent">
+                    <div class="modal-header">
+                        <h5 class="modal-title modalTitle"> </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <div class="row modalTitle">
                     
-                    </div>
+                    <div class="modal-body modalBody">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row modalImage">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row modalStats">
+                                <div class="col-md-12">
 
-                    <div class="row modalLocation">
-
-                    </div>
-                            
-                    <div class="row modalStats">
-                        <!-- Rating Section -->
-                        <div id="modalRating" class="col-md-4">
-
+                                    <div class="row modalLocation">
+                                    </div>
+                                            
+                                    <!-- <div class="row modalStats">
+                                    </div> -->
+                                    
+                                    <!-- Rating Section -->
+                                    <div id="modalRating">
+                                    </div>
+                                    <!-- Difficulty Section -->
+                                    <div id="modalDifficulty">
+                                    </div>
+                                    <!-- Length Section -->
+                                    <div id="modalLength">     
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row modalSummary">
+                                    </div>   
+                                </div>
+                            </div>
                         </div>
-                        <!-- Difficulty Section -->
-                        <div id="modalDifficulty" class="col-md-4">
-                            
-                        </div>
-                        <!-- Length Section -->
-                        <div id="modalLength" class="col-md-4">
-                        
-                        </div>
-                    </div>
-
-                    <!-- Summary -->
-                    <div class="row modalSummary">
-
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-        
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
-    <!-- <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- moment.js link -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js" integrity="sha256-ABVkpwb9K9PxubvRrHMkk6wmWcIHUE9eBxNZLXYQ84k=" crossorigin="anonymous"></script> 
-    <!-- skycons link -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.min.js'></script>
-    <script src="assets/javascript/app.js"></script>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+        <!-- <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- moment.js link -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js" integrity="sha256-ABVkpwb9K9PxubvRrHMkk6wmWcIHUE9eBxNZLXYQ84k=" crossorigin="anonymous"></script> 
+        <!-- skycons link -->
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.min.js'></script>
+        <script src="assets/javascript/app.js"></script>
 
-    </body>
+  </body>
 </html>
