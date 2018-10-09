@@ -1,0 +1,20 @@
+.navbar-toggler {
+    background-color: green;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#collapsibleNavbar {
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#ourStoryBody {
+    padding-top: 2%;
+    padding-left: 4%;
+    padding-right: 4%;
+    font-size: 18px;
+    line-height: 2rem;
+}

@@ -1,7 +1,14 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>ourStory</title>
+    <title>The Weekender Our Story</title>
+    <!-- Firebase App is always required and must be first -->
+    <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-app.js"></script>
+
+    <!-- Add additional services that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-database.js"></script>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,6 +17,7 @@
     <link rel="shortcut icon" href="assets/images/favicon.png"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/results.css">
     <link rel="stylesheet"  href="assets/css/ourStory.css">
   </head>
   <body id="background">
@@ -18,7 +26,7 @@
     <!-- NavBar -->
 
     <nav class="navbar navbar-expand-lg navbar-light bg-transparent navWrap">
-            <a class="navbar-brand" href="results.html"><img class="headerIMG" src="assets/images/theweekender.png" height="140px" alt="The Weekender"></a>
+            <a class="navbar-brand" href="index.html"><img class="headerIMG" src="assets/images/theweekender.png" height="140px" alt="The Weekender"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -31,9 +39,14 @@
                     <a class="nav-link badge-success" href="ourStory.html">Our Story</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Contact Us</a>
+                    <button id="contactUsButton" type="button" class="btn" data-toggle="modal" data-target="#exampleModal" data-whatever="">Contact Us</button>
+                    <!-- <a class="nav-link" href="#">Contact Us</a> -->
                     </li>
                 </ul>
+                <form class="form-inline my-2 my-lg-0" action="results.html">
+                    <input id="topic-input" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" required/>
+                    <button id="add-topic" class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
             </div>
         </nav>
 
@@ -43,12 +56,15 @@
         <div id="mainSection" class="row container">
             <div class="col-md-7 container">
                 <h1 id="mainLine">
-                    Our Story..
+                    Our Story...
                 </h1>
                 <h3 id="secondaryLine">
                     Starting with the desire to enable us to dream big and do more!
                 </h3>
+                <p id="ourStoryBody">
+                    The Weekender is designed to be a web based application that takes all the trouble of quickly finding everything you need to make a quick weekend getaway happen without going down the rabbit hole that is the internet. The Weekender will serve a myriad of useful data across many common verticals that take the complexity of putting a weekend trip together. 
 
+                </p>
             </div>
             <div class="col-md-5 container">
                 <img id="storyIMG" src="assets/images/travel.png" alt="travel globe">
@@ -77,10 +93,10 @@
             <!--Card2-->
             <div class="col-md-3 d-flex justify-content-center">   
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="assets/images/Keo.jfif" alt="Card image cap">
+                    <img class="card-img-top" src="assets/images/Keo.jfif" alt="Keo Thorng">
                     <div class="card-body">
-                        <h5 class="card-title">Keo Throng</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <h5 class="card-title">Keo Thorng</h5>
+                        <p class="card-text">Family man that chooses to move with the times.  Strong foundation in information technology and logistics, with an understanding of web development.</p>
                         <a href="https://github.com/kthorng" class="btn btn-primary">Github</a>
                     </div>
                 </div>
@@ -89,10 +105,10 @@
             <!--Card3-->
             <div class="col-md-3 d-flex justify-content-center">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="assets/images/Hy.png" alt="Card image cap">
+                    <img class="card-img-top" src="assets/images/Hy.png" alt="Hy Huynh">
                     <div class="card-body">
                         <h5 class="card-title">Hy Huynh</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text">A biologist and chemist who found passion in the technology field. Her learning journey is endless in this fascinating and ever changing world of science and technology. </p>
                         <a href="https://github.com/hyxhuynh" class="btn btn-primary">Github</a>
                     </div>
                 </div>
@@ -101,10 +117,10 @@
             <!--Card4-->
             <div class="col-md-3 d-flex justify-content-center">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="assets/images/James.jfif" alt="Card image cap">
+                    <img class="card-img-top" src="assets/images/James.jfif" alt="James Dowd">
                     <div class="card-body">
                         <h5 class="card-title">James Dowd</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p class="card-text">Former Athletic Trainer turned Medical Sales & Marketing Pro, excited to be learning all things web development.</p>
                         <a href="https://github.com/jdowd215" class="btn btn-primary">Github</a>
                     </div>
                 </div>
@@ -112,13 +128,85 @@
         
     </div>
 
+    <!-- Contact Us Modal Section -->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                <div class="form-group">
+                    <label for="full-name" class="col-form-label">Your Name:</label>
+                    <input type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="form-group">
+                    <label for="submitter-email" class="col-form-label">Your E-mail:</label>
+                    <input type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="form-group">
+                    <label for="message-text" class="col-form-label">Message:</label>
+                    <textarea class="form-control" id="message-text"></textarea>
+                </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Send message!</button>
+            </div>
+            </div>
+        </div>
     </div>
+    </div>
+    
+        <!-- Footer -->
+        <footer class="page-footer font-small bg-white">
+            <!-- APIs -->
+            <ul class="list-unstyled list-inline text-center">Powered By:
+              <li class="list-inline-item">
+                   <!-- Google Maps -->
+                  <a href="https://developers.google.com/maps/documentation/">
+                  <img id="apiIMG" src="assets/images/logo-google-maps.jpg" alt="Google Maps" style="width:125px; height:125px;"></a>
+              </li>
+              <li class="list-inline-item">
+                   <!-- Dark Sky -->
+                   <a href="https://darksky.net/dev">
+                  <img id="apiIMG" src="assets/images/darkskylogo.PNG" alt="Dark Sky" style="width:100px; height:100px;"></a>
+              </li>
+              <li class="list-inline-item">
+                  <!-- Meetup -->
+                  <a href="https://www.meetup.com/meetup_api/">
+                  <img id="apiIMG" src="assets/images/meetup+logo.png" alt="Meetup" style="width:125px; height:125px;"></a>
+              </li>
+              <li class="list-inline-item">
+                  <!--Hiking Project -->
+                  <a href="https://www.hikingproject.com/data">
+                  <img id="apiIMG" src="assets/images/hikingprojectlogo.png" alt="Hiking Project" style="width:125px; height:75px;"></a>
+              </li>
+              <li class="list-inline-item">
+                   <!--Zomato-->
+                   <a href="https://developers.zomato.com/api">
+                   <img id="apiIMG" src="assets/images/zomato logo.png" alt="Zomato" style="width:75px; height:75px;"> </a>
+              </li>
+          </ul>
+                  <!-- Copyright -->
+              <div class="footer-copyright text-center"> © 2018 Copyright:
+                  <a href="https://circuitsyn.github.io/daWeekender/"> daWeekender.com</a>
+              </div> 
+      </footer>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script> -->
     <script src="assets/javascript/app.js"></script>
 
     </body>

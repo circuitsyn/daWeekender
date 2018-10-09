@@ -80,7 +80,25 @@ body, html {
     padding: 0px 6px 0px 6px;
 }
 
+.btn-outline-success {
+    font-weight: bold;
+    /* color: white !important; */
+    padding: 0px 6px 0px 6px;
+}
+
+#contactUsButton {
+    background-color: transparent;
+    font-weight: bold;
+    padding: 8px;
+    
+}
 .btn-success.narrower {
+    font-weight: normal;
+    font-size: 16px;
+}
+
+}
+.btn-outline-success.narrower {
     font-weight: normal;
     font-size: 16px;
 }

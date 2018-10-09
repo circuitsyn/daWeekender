@@ -1,0 +1,62 @@
+.fit {
+    width: auto;
+    max-width: 100%;
+    max-height:225px;
+    border-radius: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+/* Styling for title */
+.modalTitle { 
+    font-family: "Great Vibes", cursive; 
+    font-size: 30px;
+    font-weight: normal;
+    text-shadow: 0 1px 1px #fff; 
+    text-align: center;
+    width: 100%;
+} 
+
+/* Center title */
+/* .modal-title {
+    text-align: center;
+    width: 100%; 
+} */
+
+/* Styling for location */
+.modalLocation { 
+    color: #ff4411; 
+    font-family: 'Trocchi', serif; 
+    font-size: 45px; 
+    font-weight: normal; 
+    line-height: 48px; 
+    margin: 0; 
+    text-align: center;
+}
+
+/* Add color to content background */
+.modalContent {
+    background-color: rgba(135, 222, 222);
+}
+
+/* Add background image to modals */
+.modalBody {
+    background-image: url("../images/light-veneer.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Styling the text in Stats and Summary */
+.modalStats, .modalSummary { 
+    color: #333; 
+    font-family: 'Source Sans Pro', sans-serif; 
+    font-size: 18px; 
+    line-height: 32px; 
+    margin: 0 0 24px; 
+}
+
+.summary {
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+}
