@@ -26,6 +26,7 @@ For more information on the site creators, click on the "Our Story" tab to read 
 
 ## The Weekender - Landing Page
 Here you are greeted with a simple ask to get your weekend research started. Simply kick off your experience with a single location search. The background seamlessly rotates for your travel making inspirational pleasure!
+
 ![TheWeekender_Landing](assets/images/theweekender_landing.png)
 
 ## The Weekender - Results Page
@@ -45,4 +46,5 @@ The best part about all these inqueries you can make? You can tab through them a
 
 ## The Weekender - Our Story Page
 We wanted to take the time and give you a small blurb about what we are all about and also a brief statement and photo of the creators of The Weekender! We believe strongly in the power of leveraging technology to make more happen in our lives, especially on the fun side. So visit Our Story page and click on our Github links to check out more of our own personal work. Thanks for stopping by!
+
 ![TheWeekender_OurStory](assets/images/theweekender_ourStory.png)
