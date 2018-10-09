@@ -58,3 +58,28 @@
     -webkit-box-shadow: none;
     box-shadow: none;
 }
+
+footer {
+    width: 50%;
+    
+}
+
+.page-footer {
+    margin: auto;
+    border-radius: 15px;
+}
+
+#apiIMG {
+    padding: 3px;
+    display: inline-block;
+}
+
+.footer-copyright{
+    margin-bottom: 20px;
+    padding-bottom: 1%;
+}
+
+
+
+
+

@@ -110,11 +110,11 @@ $(document).ready(function () {
                 var dayOfWeek = today["_d"].toString().substring(0, 3);
     
                 if (dayOfWeek == "Sat" || dayOfWeek == "Sun") {
-                    var friRequestDay = moment().add(3, "days").day("Friday");  //.unix();
+                    var friRequestDay = moment().add(3, "days").day("Friday");  
                     console.log(friRequestDay.unix());
-                    var satRequestDay = moment().add(3, "days").day("Saturday");  //.unix();
+                    var satRequestDay = moment().add(3, "days").day("Saturday");  
                     console.log(satRequestDay.unix());
-                    var sunRequestDay = moment().add(3, "days").day("Sunday");  //.unix();
+                    var sunRequestDay = moment().add(1, "week").day("Sunday");
                     console.log(sunRequestDay.unix());
                 }
                 else {
