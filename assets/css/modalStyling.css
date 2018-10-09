@@ -1,3 +1,4 @@
+/* Styling for image */
 .fit {
     width: auto;
     max-width: 100%;
@@ -8,9 +9,13 @@
     margin-right: auto; 
 }
 
+/* Uniform font-family */
+.hikingModal {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 /* Styling for title */
 .modalTitle { 
-    font-family: "Great Vibes", cursive; 
     font-size: 30px;
     font-weight: normal;
     text-shadow: 0 1px 1px #fff; 
@@ -18,16 +23,9 @@
     width: 100%;
 } 
 
-/* Center title */
-/* .modal-title {
-    text-align: center;
-    width: 100%; 
-} */
-
 /* Styling for location */
 .modalLocation { 
     color: #ff4411; 
-    font-family: 'Trocchi', serif; 
     font-size: 45px; 
     font-weight: normal; 
     line-height: 48px; 
@@ -42,21 +40,21 @@
 
 /* Add background image to modals */
 .modalBody {
-    background-image: url("../images/light-veneer.png");
+    /* background-image: url("../images/light-veneer.png");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
+    background-color: white;
 }
 
-/* Styling the text in Stats and Summary */
+/* Styling for the text in Stats and Summary */
 .modalStats, .modalSummary { 
     color: #333; 
-    font-family: 'Source Sans Pro', sans-serif; 
     font-size: 18px; 
     line-height: 32px; 
     margin: 0 0 24px; 
 }
 
+/* Prevent text overflow */
 .summary {
-    font-family: Arial, Helvetica, sans-serif;
     overflow: hidden;
 }
