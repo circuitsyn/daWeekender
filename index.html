@@ -38,6 +38,9 @@
           <span class="navbar-toggler-icon"></span>
         </button>
       
+        <button onclick = "googleSignin()">Google Signin</button>
+        <button onclick = "googleSignout()">Google Signout</button> 
+
         <!-- Navbar links -->
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="navbar-nav">
@@ -76,6 +79,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script> -->
     <script src="assets/javascript/app.js"></script>
+    <script>//========Firebase Sign in and Sign Out Code==========
+        var provider = new firebase.auth.GoogleAuthProvider();
+    
+        function googleSignin() {
+        firebase.auth()
+        
+        .signInWithPopup(provider).then(function(result) {
+            var token = result.credential.accessToken;
+            var user = result.user;
+                
+            console.log(token)
+            console.log(user)
+        }).catch(function(error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+                
+            console.log(error.code)
+            console.log(error.message)
+        });
+        }
+    
+        function googleSignout() {
+        firebase.auth().signOut()
+            
+        .then(function() {
+            console.log('Signout Succesfull')
+        }, function(error) {
+            console.log('Signout Failed')  
+        });
+        }
+    
+        //========End of login/logout code==============</script>
    
   </body>
 </html>
